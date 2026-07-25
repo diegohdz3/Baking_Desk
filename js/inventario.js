@@ -1,20 +1,16 @@
-// --- Configuración API ---
 const API_ING = 'http://35.171.239.148:7000/api/inventario';
 
 let ingredientesGlobal = [];
-let ingredientesFiltradosGlobal = []; // Almacena el resultado de los filtros activos
+let ingredientesFiltradosGlobal = []; 
 let editId = null;
 let deleteId = null;
 
-// --- Configuración Paginación (Límite: 8) ---
 let paginaActual = 1;
 const ingredientesPorPagina = 8;
 
-// --- Elementos DOM ---
 const tbodyIngredientes = document.getElementById('tbody-ingredientes');
 const paginationControls = document.getElementById('pagination-controls');
 
-// Utilidades Modales
 function abrir(id){ document.getElementById(id)?.classList.add('is-open'); }
 function cerrar(id){ document.getElementById(id)?.classList.remove('is-open'); }
 
@@ -23,7 +19,6 @@ document.querySelectorAll('.modal-overlay').forEach(ov => ov.addEventListener('c
 
 const formatearMoneda = (v) => new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(v);
 
-// --- Lógica de Estado y Barras ---
 function evaluarStock(stock, min) {
     if (stock <= 0) return { clas: 'critico', txt: 'Agotado / Crítico', width: 0 };
     const porcentaje = Math.min((stock / (min * 2)) * 100, 100);
@@ -32,7 +27,6 @@ function evaluarStock(stock, min) {
     return { clas: 'optimo', txt: 'Óptimo', width: porcentaje };
 }
 
-// --- Cargar Datos ---
 async function cargarDatos() {
     try {
         const resIng = await fetch(API_ING);
@@ -40,7 +34,7 @@ async function cargarDatos() {
             ingredientesGlobal = await resIng.json();
         }
         ingredientesFiltradosGlobal = [...ingredientesGlobal];
-        paginaActual = 1; // Forzar inicio en página 1 tras recarga limpia
+        paginaActual = 1; 
         actualizarSelectCategorias();
         renderIngredientes(ingredientesFiltradosGlobal);
     } catch (error) {
@@ -50,7 +44,6 @@ async function cargarDatos() {
     }
 }
 
-// --- Renderizar Ingredientes con Segmentación ---
 function renderIngredientes(datos) {
     tbodyIngredientes.innerHTML = '';
 
@@ -99,7 +92,6 @@ function renderIngredientes(datos) {
     renderPaginacion(datos.length);
 }
 
-// --- Generar Botones de Paginación Dinámicos ---
 function renderPaginacion(totalElementos) {
     if (!paginationControls) return;
     paginationControls.innerHTML = '';
@@ -143,7 +135,6 @@ function renderPaginacion(totalElementos) {
     paginationControls.appendChild(btnSig);
 }
 
-// --- Filtros ---
 function actualizarSelectCategorias() {
     const selector = document.getElementById('f-categoria');
     if (!selector) return;
@@ -181,7 +172,6 @@ document.getElementById('f-buscar')?.addEventListener('input', renderFiltrado);
 document.getElementById('f-categoria')?.addEventListener('change', renderFiltrado);
 document.getElementById('f-estado')?.addEventListener('change', renderFiltrado);
 
-// --- Modales (Agregar / Editar / Ver) ---
 document.getElementById('btn-open-new')?.addEventListener('click', () => {
     editId = null;
     document.getElementById('form-ingrediente').reset();
@@ -217,11 +207,8 @@ window.editarIngrediente = function(id) {
     abrir('modal-ingrediente');
 };
 
-// =========================================================================
 // 🛒 LÓGICA PARA SURTIR STOCK Y REGISTRAR GASTO EN FINANZAS
-// =========================================================================
 
-// 1. Abrir Modal y cargar lista desplegable de ingredientes
 document.getElementById('btn-open-surtir')?.addEventListener('click', () => {
     const selectIng = document.getElementById('surtir-ingrediente-id');
     if (!selectIng) return;
@@ -239,7 +226,6 @@ document.getElementById('btn-open-surtir')?.addEventListener('click', () => {
     abrir('modal-surtir');
 });
 
-// 2. NUEVO: Autocalcular el costo total en tiempo real al seleccionar o ingresar la cantidad
 const selectIngSurtir = document.getElementById('surtir-ingrediente-id');
 const cantidadSurtir = document.getElementById('surtir-cantidad');
 const costoTotalSurtir = document.getElementById('surtir-costo-total');
@@ -258,7 +244,7 @@ function calcularCostoSurtir() {
 selectIngSurtir?.addEventListener('change', calcularCostoSurtir);
 cantidadSurtir?.addEventListener('input', calcularCostoSurtir);
 
-// 3. Procesar formulario de Compra de Stock
+
 document.getElementById('form-surtir')?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -284,7 +270,7 @@ document.getElementById('form-surtir')?.addEventListener('submit', async (e) => 
             if (typeof mostrarToast === 'function') {
                 mostrarToast('Compra registrada y stock actualizado');
             }
-            cargarDatos(); // Recargar la tabla con el nuevo stock
+            cargarDatos(); 
         } else {
             const errorTxt = await response.text();
             alert('Error al registrar compra: ' + errorTxt);
@@ -295,9 +281,7 @@ document.getElementById('form-surtir')?.addEventListener('submit', async (e) => 
     }
 });
 
-// =========================================================================
-// 📝 GUARDAR (CREAR / EDITAR) INGREDIENTE
-// =========================================================================
+//  GUARDAR (CREAR / EDITAR) INGREDIENTE
 document.getElementById('form-ingrediente')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const categoriaTexto = document.getElementById('i-categoria').value.trim();
@@ -343,7 +327,6 @@ document.getElementById('form-ingrediente')?.addEventListener('submit', async (e
     }
 });
 
-// --- Eliminar ---
 window.abrirEliminar = function(id) {
     deleteId = id;
     abrir('modal-eliminar');
@@ -366,10 +349,8 @@ document.getElementById('btn-confirmar-eliminar')?.addEventListener('click', asy
     }
 });
 
-// --- Iniciar ---
 document.addEventListener('DOMContentLoaded', cargarDatos);
 
-// ---- Transición al salir de la página ----
 const appEl = document.querySelector('.app');
 const DURACION_SALIDA = 200;
 
