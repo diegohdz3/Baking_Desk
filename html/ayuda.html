@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BakingDesk — Ayuda</title>
+    <link rel="stylesheet" href="../css/ayuda.css">
+    <script src="../js/seguridad.js"></script>
+</head>
+<body>
+
+<div class="app">
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+        <!-- AGREGAR DESDE AQUÍ -->
+        <div class="sidebar__logo-container">
+            <img src="../Screenshot_3.png" alt="Nieves Repostería" class="sidebar__logo">
+        </div>
+        <!-- HASTA AQUÍ -->
+        <div class="sidebar__user">
+            <!-- 🌟 Identificadores agregados aquí abajo para que seguridad.js haga su magia 🌟 -->
+            <div class="avatar" id="user-avatar">AS</div>
+            <div>
+                <div class="sidebar__user-name" id="user-name-display">Adriana Suárez</div>
+                <div class="sidebar__user-role" id="user-role-display">Administradora</div>
+            </div>
+        </div>
+        <nav class="nav">
+            <a class="nav__item" href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1v-9"/></svg><span>Menú</span></a>
+            <a class="nav__item" href="pedidos.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg><span>Pedidos</span></a>
+            <a class="nav__item" href="productos.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg><span>Productos</span></a>
+            <a class="nav__item" href="inventario.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M3 7l3-4h12l3 4"/><path d="M9 11h6"/></svg><span>Inventario</span></a>
+            <a class="nav__item" href="entregas.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="7" width="14" height="10" rx="1.5"/><path d="M15 10h4l3 3v4h-7z"/><circle cx="6" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg><span>Entregas</span></a>
+            <a class="nav__item" href="clientes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.6 2.7-6 6-6s6 2.4 6 6"/><circle cx="17.5" cy="9" r="2.4"/><path d="M15.5 14.2c2.6.3 4.5 2.5 4.5 5.3"/></svg><span>Clientes</span></a>
+            <a class="nav__item" href="finanzas.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V9m6 10V5m6 14v-7"/></svg><span>Finanzas</span></a>
+            <a class="nav__item" href="configuracion.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1-1.6 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg><span>Configuración</span></a>
+            <a class="nav__item active" href="ayuda.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 0c0 1.7-2.5 2-2.5 4"/><path d="M12 17h.01"/></svg><span>Ayuda</span></a>
+        </nav>
+        <a class="nav__logout" href="login.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg><span>Cerrar sesión</span></a>
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+    <main>
+        <div class="topbar">
+            <h1>Ayuda</h1>
+            <p>Guías rápidas de cada módulo y respuestas a las dudas más comunes.</p>
+        </div>
+
+        <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <input type="text" id="buscador" placeholder="Busca por módulo o palabra clave… ej. «entrega», «contraseña»" />
+        </div>
+
+        <!-- ================= GUÍAS DE MÓDULOS ================= -->
+        <h2 class="section-title">Guías de módulos</h2>
+        <p class="section-subtitle">Qué hace cada sección y qué puedes hacer ahí.</p>
+
+        <div class="guide-grid" id="guias">
+            <div class="guide-item" data-tema="dashboard menu resumen inicio">
+                <div class="guide-item__header">
+                    <span class="guide-icon a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1v-9"/></svg></span>
+                    <span class="guide-item__title">Menú (Dashboard)</span>
+                    <svg class="guide-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="guide-item__body"><div class="guide-item__body-inner">
+                    Es la pantalla de inicio: un resumen del estado general del negocio.
+                    <ul>
+                        <li>Tarjetas con pedidos de hoy, ventas del día, productos con stock bajo y total de clientes.</li>
+                        <li>Gráfico de ventas de la semana y un desglose de pedidos por estado.</li>
+                        <li>Tabla con los pedidos más recientes, para dar seguimiento rápido sin entrar a otro módulo.</li>
+                    </ul>
+                </div></div>
+            </div>
+
+            <div class="guide-item" data-tema="pedidos nuevo editar eliminar filtrar">
+                <div class="guide-item__header">
+                    <span class="guide-icon b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg></span>
+                    <span class="guide-item__title">Pedidos</span>
+                    <svg class="guide-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="guide-item__body"><div class="guide-item__body-inner">
+                    Aquí gestionas y das seguimiento a todas las órdenes de la pastelería.
+                    <ul>
+                        <li><strong>Agregar Pedido:</strong> registra cliente, producto, fecha de entrega y notas.</li>
+                        <li><strong>Editar / Eliminar:</strong> usa los íconos de lápiz y bote de basura en cada fila.</li>
+                        <li><strong>Filtrar/Buscar:</strong> por nombre del cliente, estado del pedido o rango de fechas.</li>
+                        <li>Los estados posibles son: Nuevo, En curso, Listo y Entregado.</li>
+                    </ul>
+                </div></div>
+            </div>
+
+            <div class="guide-item" data-tema="productos catalogo precio categoria disponibilidad">
+                <div class="guide-item__header">
+                    <span class="guide-icon c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></span>
+                    <span class="guide-item__title">Productos</span>
+                    <svg class="guide-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="guide-item__body"><div class="guide-item__body-inner">
+                    Es tu catálogo: los productos terminados que ofreces a la venta.
+                    <ul>
+                        <li>Define nombre, categoría, precio y descripción de cada producto.</li>
+                        <li>El estado indica si está Disponible, Agotado o Descontinuado.</li>
+                        <li>Usa el ícono de ojo para ver el detalle completo sin salir del listado.</li>
+                    </ul>
+                </div></div>
+            </div>
+
+            <div class="guide-item" data-tema="inventario ingredientes stock alerta escasez">
+                <div class="guide-item__header">
+                    <span class="guide-icon d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M3 7l3-4h12l3 4"/><path d="M9 11h6"/></svg></span>
+                    <span class="guide-item__title">Inventario</span>
+                    <svg class="guide-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="guide-item__body"><div class="guide-item__body-inner">
+                    Controla el stock de tus ingredientes (materia prima), no de los productos terminados.
+                    <ul>
+                        <li>Cada ingrediente muestra una barra de stock: verde (óptimo), naranja (bajo) o rojo (crítico).</li>
+                        <li>El estado se calcula automáticamente comparando el stock actual contra el mínimo que definas.</li>
+                        <li>Registra costo y unidad de medida (kg, litros o piezas) al dar de alta un ingrediente.</li>
+                    </ul>
+                </div></div>
+            </div>
+
+            <div class="guide-item" data-tema="entregas calendario registrar actualizar metodo envio">
+                <div class="guide-item__header">
+                    <span class="guide-icon a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="7" width="14" height="10" rx="1.5"/><path d="M15 10h4l3 3v4h-7z"/><circle cx="6" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg></span>
+                    <span class="guide-item__title">Entregas</span>
+                    <svg class="guide-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="guide-item__body"><div class="guide-item__body-inner">
+                    Organiza cuándo y cómo se entrega cada pedido, en formato de calendario mensual.
+                    <ul>
+                        <li>Haz clic en cualquier día para ver las entregas programadas ese día.</li>
+                        <li>Registra una entrega vinculando el pedido, la fecha, hora y método (domicilio o recolección).</li>
+                        <li>Los puntos de color en el calendario reflejan el estado: pendiente, confirmada, entregada o cancelada.</li>
+                    </ul>
+                </div></div>
+            </div>
+
+            <div class="guide-item" data-tema="clientes registrar contacto historial buscar">
+                <div class="guide-item__header">
+                    <span class="guide-icon b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.6 2.7-6 6-6s6 2.4 6 6"/><circle cx="17.5" cy="9" r="2.4"/><path d="M15.5 14.2c2.6.3 4.5 2.5 4.5 5.3"/></svg></span>
+                    <span class="guide-item__title">Clientes</span>
+                    <svg class="guide-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="guide-item__body"><div class="guide-item__body-inner">
+                    Tu base de datos de clientes, con su información de contacto e historial de compras.
+                    <ul>
+                        <li>Registra nombre, teléfono y dirección al dar de alta un cliente nuevo.</li>
+                        <li>Busca y filtra por nombre, estado o fecha de registro.</li>
+                        <li>Al eliminar un cliente se pide confirmación, ya que también se pierde su historial asociado.</li>
+                    </ul>
+                </div></div>
+            </div>
+
+            <div class="guide-item" data-tema="finanzas ingresos gastos ganancia prediccion">
+                <div class="guide-item__header">
+                    <span class="guide-icon c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V9m6 10V5m6 14v-7"/></svg></span>
+                    <span class="guide-item__title">Finanzas</span>
+                    <svg class="guide-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="guide-item__body"><div class="guide-item__body-inner">
+                    El panel económico del negocio: qué entra, qué sale y qué te queda.
+                    <ul>
+                        <li>Registra ingresos (puedes vincularlos a un pedido) y gastos (con categoría) por separado.</li>
+                        <li>El gráfico compara ingresos vs. gastos mes a mes, y el ranking muestra tus productos más vendidos.</li>
+                        <li>La predicción financiera proyecta los próximos 2 meses según la tendencia reciente — es una estimación, no un dato exacto.</li>
+                    </ul>
+                </div></div>
+            </div>
+
+            <div class="guide-item" data-tema="configuracion negocio contraseña sesiones seguridad">
+                <div class="guide-item__header">
+                    <span class="guide-icon d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1-1.6 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg></span>
+                    <span class="guide-item__title">Configuración</span>
+                    <svg class="guide-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="guide-item__body"><div class="guide-item__body-inner">
+                    Ajustes generales de la cuenta y del negocio.
+                    <ul>
+                        <li><strong>General:</strong> nombre del negocio, contacto, dirección y horario que se usan en tickets y comunicación.</li>
+                        <li><strong>Seguridad:</strong> cambia tu contraseña cuando lo necesites.</li>
+                        <li><strong>Sesiones activas:</strong> revisa desde qué dispositivos ha iniciado sesión tu cuenta y ciérralas si no las reconoces.</li>
+                    </ul>
+                </div></div>
+            </div>
+        </div>
+
+        <!-- ================= FAQ ================= -->
+        <h2 class="section-title">Preguntas frecuentes</h2>
+        <p class="section-subtitle">Las dudas que más se repiten al usar el sistema.</p>
+
+        <div class="faq-list" id="faqs">
+            <div class="faq-item" data-tema="pedido crear nuevo registrar">
+                <div class="faq-item__q">¿Cómo registro un nuevo pedido?
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="faq-item__a"><div class="faq-item__a-inner">
+                    Ve al módulo de Pedidos y presiona "Agregar Pedido" en la esquina superior derecha. Selecciona el cliente y el producto, indica fecha de entrega y cantidad, y confirma.
+                </div></div>
+            </div>
+
+            <div class="faq-item" data-tema="ingrediente critico bajo optimo stock">
+                <div class="faq-item__q">¿Qué significa que un ingrediente esté en estado "crítico"?
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="faq-item__a"><div class="faq-item__a-inner">
+                    Significa que el stock actual está por debajo de la mitad de tu stock mínimo definido. Es una señal para reabastecer cuanto antes, antes de que se agote por completo.
+                </div></div>
+            </div>
+
+            <div class="faq-item" data-tema="entrega metodo domicilio recoleccion cambiar">
+                <div class="faq-item__q">¿Puedo cambiar el método de entrega después de registrarla?
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="faq-item__a"><div class="faq-item__a-inner">
+                    Sí. En el módulo de Entregas, haz clic en el día correspondiente del calendario y usa el ícono de lápiz sobre la entrega que quieras modificar — puedes actualizar fecha, hora, método o estado.
+                </div></div>
+            </div>
+
+            <div class="faq-item" data-tema="contraseña actualizar cambiar seguridad">
+                <div class="faq-item__q">¿Cómo actualizo mi contraseña?
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="faq-item__a"><div class="faq-item__a-inner">
+                    En Configuración → pestaña Seguridad, ingresa tu contraseña actual y la nueva contraseña dos veces para confirmarla.
+                </div></div>
+            </div>
+
+            <div class="faq-item" data-tema="cerrar sesion guardar cambios">
+                <div class="faq-item__q">¿Qué pasa si cierro sesión sin guardar cambios?
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="faq-item__a"><div class="faq-item__a-inner">
+                    Al presionar "Cerrar sesión" el sistema guarda automáticamente los cambios pendientes antes de redirigirte al login, así que no necesitas guardar manualmente antes de salir.
+                </div></div>
+            </div>
+
+            <div class="faq-item" data-tema="prediccion financiera exacta estimacion">
+                <div class="faq-item__q">¿Qué tan exacta es la predicción financiera?
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="faq-item__a"><div class="faq-item__a-inner">
+                    Es una estimación basada en la tendencia de los últimos 6 meses, útil para planear compras de insumos con anticipación — no sustituye un análisis financiero formal.
+                </div></div>
+            </div>
+        </div>
+
+        <p class="empty-search" id="sin-resultados">No encontramos resultados para tu búsqueda.</p>
+
+        <!-- ================= CONTACTO ================= -->
+        <div class="contact-card">
+      <span class="contact-card__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </span>
+            <div>
+                <h4>¿No encontraste lo que buscabas?</h4>
+                <p>Escríbele directamente al equipo de soporte de BakingDesk desde Configuración → General.</p>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="../js/ayuda.js"></script>
+</body>
+</html>

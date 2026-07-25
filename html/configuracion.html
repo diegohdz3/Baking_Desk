@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BakingDesk — Configuración</title>
+<!-- Enlace a tu archivo CSS -->
+    <link rel="stylesheet" href="../css/configuracion.css">
+    <script src="../js/seguridad.js"></script>
+</head>
+<body>
+
+<div class="app">
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+        <!-- AGREGAR DESDE AQUÍ -->
+        <div class="sidebar__logo-container">
+            <img src="../Screenshot_3.png" alt="Nieves Repostería" class="sidebar__logo">
+        </div>
+        <!-- HASTA AQUÍ -->
+        <div class="sidebar__user">
+            <div class="avatar">AS</div>
+            <div><div class="sidebar__user-name">Adriana Suárez</div><div class="sidebar__user-role">Administradora</div></div>
+        </div>
+        <nav class="nav">
+            <a class="nav__item" href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1v-9"/></svg><span>Menú</span></a>
+            <a class="nav__item" href="pedidos.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg><span>Pedidos</span></a>
+            <a class="nav__item" href="productos.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg><span>Productos</span></a>
+            <a class="nav__item" href="inventario.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M3 7l3-4h12l3 4"/><path d="M9 11h6"/></svg><span>Inventario</span></a>
+            <a class="nav__item" href="entregas.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="7" width="14" height="10" rx="1.5"/><path d="M15 10h4l3 3v4h-7z"/><circle cx="6" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg><span>Entregas</span></a>
+            <a class="nav__item" href="clientes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.6 2.7-6 6-6s6 2.4 6 6"/><circle cx="17.5" cy="9" r="2.4"/><path d="M15.5 14.2c2.6.3 4.5 2.5 4.5 5.3"/></svg><span>Clientes</span></a>
+            <a class="nav__item" href="finanzas.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V9m6 10V5m6 14v-7"/></svg><span>Finanzas</span></a>
+            <a class="nav__item active" href="configuracion.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1-1.6 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg><span>Configuración</span></a>
+            <a class="nav__item" href="ayuda.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M9.5 9a2.5 2.5 0 015 0c0 1.7-2.5 2-2.5 4"/>
+                    <path d="M12 17h.01"/>
+                </svg>
+                <span>Ayuda</span>
+            </a>
+
+        </nav>
+        <a class="nav__logout" href="login.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg><span>Cerrar sesión</span></a>
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+    <main>
+        <div class="topbar">
+            <h1>Configuración</h1>
+            <p>Administra los datos del negocio, tu seguridad y las sesiones activas.</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="general">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-8h6v8"/></svg>
+                General
+            </button>
+            <button class="tab" data-tab="seguridad">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+                Seguridad
+            </button>
+            <button class="tab" data-tab="sesiones">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                Sesiones activas
+            </button>
+        </div>
+
+        <!-- ================= TAB: GENERAL ================= -->
+        <section class="card" id="panel-general">
+            <h3 class="card__title">Datos del negocio</h3>
+            <p class="card__subtitle">Esta información aparece en tickets, pedidos y comunicación con clientes.</p>
+            <form id="form-general">
+                <div class="field"><label>Nombre del negocio *</label><input type="text" id="g-nombre" required /></div>
+                <div class="field-row">
+                    <div class="field"><label>Teléfono</label><input type="text" id="g-telefono" /></div>
+                    <div class="field"><label>Correo de contacto</label><input type="email" id="g-correo" /></div>
+                </div>
+                <div class="field"><label>Dirección</label><input type="text" id="g-direccion" /></div>
+                <div class="field"><label>Horario de atención</label><input type="text" id="g-horario" /></div>
+                <div class="field"><label>Descripción / datos generales</label>
+                    <textarea id="g-descripcion" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Guardar cambios</button>
+            </form>
+        </section>
+
+        <!-- ================= TAB: SEGURIDAD ================= -->
+        <section class="card hidden" id="panel-seguridad">
+            <h3 class="card__title">Actualizar credenciales</h3>
+            <p class="card__subtitle">Usa una contraseña que no hayas usado en otros sistemas.</p>
+            <form id="form-seguridad">
+                <div class="field"><label>Contraseña actual *</label><input type="password" id="s-actual" required /></div>
+                <div class="field-row">
+                    <div class="field"><label>Nueva contraseña *</label><input type="password" id="s-nueva" required minlength="8" /></div>
+                    <div class="field"><label>Confirmar nueva contraseña *</label><input type="password" id="s-confirmar" required minlength="8" /></div>
+                </div>
+                <p class="field-hint" id="s-error" style="color:var(--error); display:none;">Las contraseñas no coinciden.</p>
+                <p class="field-hint">Mínimo 8 caracteres. Se recomienda combinar letras, números y símbolos.</p>
+                <button type="submit" class="btn-primary" style="margin-top:8px;">Actualizar contraseña</button>
+            </form>
+        </section>
+
+        <!-- ================= TAB: SESIONES ================= -->
+        <section class="card hidden" id="panel-sesiones">
+            <div class="settings-header">
+                <div>
+                    <h3 class="card__title">Sesiones activas</h3>
+                    <p class="card__subtitle" style="margin-bottom:0;">Dispositivos donde tu cuenta ha iniciado sesión.</p>
+                </div>
+                <button class="btn-danger-outline" id="btn-cerrar-todas">Cerrar todas las demás</button>
+            </div>
+            <!-- Contenedor dinámico -->
+            <div id="lista-sesiones" style="margin-top:14px;"></div>
+        </section>
+    </main>
+</div>
+
+<!-- ================= TOAST ================= -->
+<div class="toast" id="toast">
+    <span class="icon-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--sage-900)" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>
+    <span id="toast-msg">Cambios guardados</span>
+</div>
+
+<!-- Enlace a tu archivo JS -->
+<script src="../js/configuracion.js"></script>
+
+</body>
+</html>

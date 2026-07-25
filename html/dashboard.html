@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BakingDesk — Dashboard</title>
+    <!-- Enlace a tu archivo CSS -->
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+        <!-- AGREGAR DESDE AQUÍ -->
+        <div class="sidebar__logo-container">
+            <img src="../Screenshot_3.png" alt="Nieves Repostería" class="sidebar__logo">
+        </div>
+        <!-- HASTA AQUÍ -->
+        <div class="sidebar__user">
+            <!-- 🌟 Identificadores agregados aquí abajo 🌟 -->
+            <div class="avatar" id="user-avatar">AS</div>
+            <div>
+                <div class="sidebar__user-name" id="user-name-display">Adriana Suárez</div>
+                <div class="sidebar__user-role" id="user-role-display">Administradora</div>
+            </div>
+        </div>
+
+        <nav class="nav">
+            <a class="nav__item active" href="dashboard.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1v-9"/></svg>
+                <span>Menú</span>
+            </a>
+            <a class="nav__item" href="pedidos.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>
+                <span>Pedidos</span>
+            </a>
+            <a class="nav__item" href="productos.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                <span>Productos</span>
+            </a>
+            <a class="nav__item" href="inventario.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M3 7l3-4h12l3 4"/><path d="M9 11h6"/></svg>
+                <span>Inventario</span>
+            </a>
+            <a class="nav__item" href="entregas.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="7" width="14" height="10" rx="1.5"/><path d="M15 10h4l3 3v4h-7z"/><circle cx="6" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg>
+                <span>Entregas</span>
+            </a>
+            <a class="nav__item" href="clientes.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.6 2.7-6 6-6s6 2.4 6 6"/><circle cx="17.5" cy="9" r="2.4"/><path d="M15.5 14.2c2.6.3 4.5 2.5 4.5 5.3"/></svg>
+                <span>Clientes</span>
+            </a>
+            <a class="nav__item" href="finanzas.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V9m6 10V5m6 14v-7"/></svg>
+                <span>Finanzas</span>
+            </a>
+            <a class="nav__item" href="configuracion.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1-1.6 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>
+                <span>Configuración</span>
+            </a>
+            <a class="nav__item" href="ayuda.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M9.5 9a2.5 2.5 0 015 0c0 1.7-2.5 2-2.5 4"/>
+                    <path d="M12 17h.01"/>
+                </svg>
+                <span>Ayuda</span>
+            </a>
+        </nav>
+
+        <a class="nav__logout" href="login.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>
+            <span>Cerrar sesión</span>
+        </a>
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+    <main>
+        <div class="topbar">
+            <h1>Dashboard</h1>
+            <span class="topbar__date" id="today"></span>
+        </div>
+
+        <!-- ---- Stat cards ---- -->
+        <section class="stats">
+            <div class="stat-card">
+                <div class="stat-card__top">
+                    <span class="stat-card__label">Pedidos hoy</span>
+                    <span class="stat-icon blush">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>
+                    </span>
+                </div>
+                <span class="stat-card__value" id="stat-pedidos">0</span>
+                <span class="stat-card__delta up" style="display:none;" id="delta-pedidos"></span>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card__top">
+                    <span class="stat-card__label">Ventas hoy</span>
+                    <span class="stat-icon sage">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5c0-1.4 1.1-2 2.5-2s2.5.7 2.5 2-1.1 1.7-2.5 2-2.5.7-2.5 2 1.1 2 2.5 2 2.5-.6 2.5-2"/></svg>
+                    </span>
+                </div>
+                <span class="stat-card__value" id="stat-ventas">$0.00</span>
+                <span class="stat-card__delta up" style="display:none;" id="delta-ventas"></span>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card__top">
+                    <span class="stat-card__label">Productos bajos</span>
+                    <span class="stat-icon error">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L2.5 18a1.6 1.6 0 001.4 2.4h16.2a1.6 1.6 0 001.4-2.4L13.7 3.9a1.6 1.6 0 00-2.8 0z"/></svg>
+                    </span>
+                </div>
+                <span class="stat-card__value" id="stat-bajos">0</span>
+                <a class="stat-card__delta link" href="inventario.html">Ver inventario →</a>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card__top">
+                    <span class="stat-card__label">Clientes</span>
+                    <span class="stat-icon plum">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.6 2.7-6 6-6s6 2.4 6 6"/><circle cx="17.5" cy="9" r="2.4"/><path d="M15.5 14.2c2.6.3 4.5 2.5 4.5 5.3"/></svg>
+                    </span>
+                </div>
+                <span class="stat-card__value" id="stat-clientes">0</span>
+                <span class="stat-card__delta up" style="display:none;" id="delta-clientes"></span>
+            </div>
+        </section>
+
+        <!-- ---- Charts ---- -->
+        <section class="charts-row">
+            <div class="card">
+                <h3 class="card__title">Ventas de la semana</h3>
+                <svg viewBox="0 0 560 220" width="100%" height="220" id="chart-ventas">
+                    <line x1="40" y1="10" x2="40" y2="180" stroke="#e9e2d8" stroke-width="1"/>
+                    <line x1="40" y1="180" x2="540" y2="180" stroke="#e9e2d8" stroke-width="1"/>
+                    <text x="10" y="185" font-size="11" fill="#7a756e" font-family="Poppins">$0</text>
+                    <text x="0" y="100" font-size="11" fill="#7a756e" font-family="Poppins" id="lbl-mid">$0</text>
+                    <text x="0" y="16" font-size="11" fill="#7a756e" font-family="Poppins" id="lbl-max">$0</text>
+
+                    <defs>
+                        <linearGradient id="salesFill" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#89bc9b" stop-opacity="0.55"/>
+                            <stop offset="100%" stop-color="#89bc9b" stop-opacity="0"/>
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Elementos dinámicos del gráfico -->
+                    <polygon id="chart-polygon" points="" fill="url(#salesFill)"/>
+                    <polyline id="chart-line" points="" fill="none" stroke="#5e8f73" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="chart-points" fill="#5e8f73"></g>
+
+                    <g font-size="11" fill="#7a756e" font-family="Poppins" text-anchor="middle">
+                        <text x="70" y="198">Lun</text><text x="150" y="198">Mar</text>
+                        <text x="230" y="198">Mié</text><text x="310" y="198">Jue</text>
+                        <text x="390" y="198">Vie</text><text x="470" y="198">Sáb</text>
+                        <text x="540" y="198">Dom</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="card">
+                <h3 class="card__title">Pedidos por estado</h3>
+                <div class="donut-wrap">
+                    <svg viewBox="0 0 180 180" width="150" height="150">
+                        <g transform="rotate(-90 90 90)">
+                            <!-- Círculo base gris -->
+                            <circle cx="90" cy="90" r="70" fill="none" stroke="#f5eee2" stroke-width="20"/>
+
+                            <!-- Círculos dinámicos (stroke-dasharray se actualiza por JS) -->
+                            <circle id="donut-nuevo" cx="90" cy="90" r="70" fill="none" stroke="#c1544a" stroke-width="20" stroke-dasharray="0 440" stroke-dashoffset="0"/>
+                            <circle id="donut-curso" cx="90" cy="90" r="70" fill="none" stroke="#8b6fae" stroke-width="20" stroke-dasharray="0 440" stroke-dashoffset="0"/>
+                            <circle id="donut-listo" cx="90" cy="90" r="70" fill="none" stroke="#89bc9b" stroke-width="20" stroke-dasharray="0 440" stroke-dashoffset="0"/>
+                            <circle id="donut-entregado" cx="90" cy="90" r="70" fill="none" stroke="#5e8f73" stroke-width="20" stroke-dasharray="0 440" stroke-dashoffset="0"/>
+                        </g>
+                        <text x="90" y="86" text-anchor="middle" class="donut-center-label" font-family="Poppins" id="donut-total">0</text>
+                        <text x="90" y="104" text-anchor="middle" class="donut-center-sub" font-family="Poppins">Total</text>
+                    </svg>
+
+                    <div class="legend">
+                        <div class="legend__item"><span class="legend__dot" style="background:#c1544a"></span>Nuevos <span class="legend__count" id="leg-nuevo">0</span></div>
+                        <div class="legend__item"><span class="legend__dot" style="background:#8b6fae"></span>En curso <span class="legend__count" id="leg-curso">0</span></div>
+                        <div class="legend__item"><span class="legend__dot" style="background:#89bc9b"></span>Listos <span class="legend__count" id="leg-listo">0</span></div>
+                        <div class="legend__item"><span class="legend__dot" style="background:#5e8f73"></span>Entregados <span class="legend__count" id="leg-entregado">0</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ---- Tabla ---- -->
+        <section class="card">
+            <div class="card__header">
+                <h3 class="card__title" style="margin:0;">Pedidos recientes</h3>
+                <a class="link-muted" href="pedidos.html">Ver todos →</a>
+            </div>
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th><th>Cliente</th><th>Producto</th><th>Fecha entrega</th><th>Estado</th><th>Total</th>
+                </tr>
+                </thead>
+                <tbody id="tabla-body">
+                <!-- Los datos se cargarán dinámicamente aquí -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+</div>
+
+<!-- Enlace a tu archivo JS -->
+<script src="../js/dashboard.js"></script>
+</body>
+</html>

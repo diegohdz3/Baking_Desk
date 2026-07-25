@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BakingDesk — Iniciar sesión</title>
+  <!-- Enlace a tu archivo CSS -->
+  <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+
+<main class="card">
+
+  <section class="panel-form">
+    <div class="brand">
+      <!-- === BLOQUE MODIFICADO: Antes había un SVG, ahora una IMGEN === -->
+      <div class="brand__mark" aria-hidden="true">
+        <!-- Reemplazamos el SVG por la etiqueta IMG del logo -->
+        <!-- Asegúrate de que esta ruta src sea correcta para tu logo -->
+        <img src="../Screenshot_3.png" class="brand__logo-img" alt="Logo Nieves Repostería">
+      </div>
+      <!-- ============================================================ -->
+      <p class="brand__title">BakingDesk</p>
+      <p class="brand__subtitle">Plataforma de gestión para repostería</p>
+    </div>
+
+    <form id="login-form" novalidate>
+      <h2 class="form-title">Iniciar sesión</h2>
+      <p class="form-hint">Ingresa tus credenciales para continuar</p>
+
+      <p class="login-error" id="login-error">Usuario o contraseña incorrectos.</p>
+
+      <div class="field">
+        <label for="username">Usuario</label>
+        <input type="text" id="username" name="username" autocomplete="username" placeholder="tu.usuario" required />
+      </div>
+
+      <div class="field field-password">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" autocomplete="current-password" placeholder="••••••••" required />
+        <button type="button" class="toggle-visibility" id="toggle-password" aria-label="Mostrar contraseña">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12Z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+      </div>
+
+      <label class="remember">
+        <input type="checkbox" id="remember" name="remember" />
+        Recordarme
+      </label>
+
+      <button type="submit" class="btn-submit">Iniciar sesión</button>
+    </form>
+  </section>
+
+  <!-- Goteo de betún: divisor firma del diseño -->
+  <div class="drip-row" aria-hidden="true">
+    <span class="drip" style="left:6px; height:22px;"></span>
+    <span class="drip" style="left:46px; height:14px;"></span>
+    <span class="drip" style="left:86px; height:30px;"></span>
+    <span class="drip" style="left:126px; height:12px;"></span>
+    <span class="drip" style="left:166px; height:24px;"></span>
+    <span class="drip" style="left:206px; height:16px;"></span>
+    <span class="drip" style="left:246px; height:28px;"></span>
+    <span class="drip" style="left:286px; height:13px;"></span>
+    <span class="drip" style="left:326px; height:20px;"></span>
+  </div>
+
+  <section class="panel-visual" aria-hidden="true">
+    <span class="sprinkle"></span>
+    <span class="sprinkle"></span>
+    <span class="sprinkle"></span>
+    <span class="sprinkle"></span>
+
+    <!-- IMAGEN DE LA CLIENTA ADAPTADA Y ANIMADA (Se mantiene igual) -->
+    <img src="../8febe51b-58ff-482f-afcd-d50c3ba406e9.jpg" class="client-image-animated" alt="Ilustración Personalizada Nieves Repostería">
+  </section>
+
+</main>
+
+<!-- Enlace a tu archivo JS -->
+<script src="../js/login.js"></script>
+
+</body>
+</html>

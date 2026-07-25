@@ -1,0 +1,43 @@
+/* toast.css */
+.toast {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    background: var(--sage-900, #2F4534); /* Respaldo de color por si acaso */
+    color: var(--white, #FFFFFF);
+    padding: 14px 20px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 16px 34px -12px rgba(47,69,52,0.55);
+    font-size: 0.87rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transform: translateY(20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all .25s ease;
+    z-index: 9999; /* Asegura que siempre esté por encima de todo */
+}
+
+.toast.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast .icon-check {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--sage-500, #89BC9B);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.toast .icon-check svg {
+    width: 13px;
+    height: 13px;
+}

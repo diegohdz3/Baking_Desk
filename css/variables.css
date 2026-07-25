@@ -1,0 +1,13 @@
+:root {
+  /* Design Tokens */
+  --sage-900: #2f4534; --sage-700: #496b4d; --sage-500: #7fa885;
+  --sage-200: #c9dccb; --sage-100: #e9f1ea;
+  --cream: #fbf4ea; --blush-bg: #fbe1e7; --blush: #f6d9de; --blush-deep: #eeb9c3;
+  --caramel: #c98a3e; --caramel-deep: #a86c2c; --caramel-soft: #f6e6d0;
+  --plum: #8b6fae; --plum-soft: #ece5f5;
+  --ink: #2a2a26; --ink-soft: #7a756e; --white: #ffffff;
+  --error: #c1544a; --error-soft: #fbe4e2;
+  --success: #4f8f5c; --success-soft: #e4f3e7;
+  --radius-lg: 22px; --radius-md: 14px;
+  --shadow-card: 0 14px 34px -18px rgba(47,69,52,0.28);
+}
