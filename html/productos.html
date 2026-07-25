@@ -4,10 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BakingDesk — Productos</title>
-    <!-- Enlace a tu archivo CSS -->
+   
     <link rel="stylesheet" href="../css/productos.css">
 
-    <!-- Enlaces globales para el Toast -->
     <link rel="stylesheet" href="../css/toast.css">
 
     <script src="../js/seguridad.js"></script>
@@ -16,7 +15,7 @@
 <body>
 
 <div class="app">
-    <!-- ================= SIDEBAR ================= -->
+
     <aside class="sidebar">
         <div class="sidebar__logo-container">
             <img src="../Screenshot_3.png" alt="Nieves Repostería" class="sidebar__logo">
@@ -73,9 +72,9 @@
         <a class="nav__logout" href="login.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg><span>Cerrar sesión</span></a>
     </aside>
 
-    <!-- ================= MAIN ================= -->
+    
     <main style="display: block; width: 100%;">
-        <!-- Contenedor de bloqueo de scroll para fijar el menú -->
+      
         <div class="main-scroll-content">
 
             <div class="topbar">
@@ -122,21 +121,20 @@
                 </div>
             </section>
 
-            <!-- ---- catálogo en tarjetas ---- -->
+          
             <section class="product-grid" id="grid-productos">
-                <!-- Los productos se cargarán dinámicamente aquí -->
+                
             </section>
 
-            <!-- FUERZA BRUTA INLINE: Si esto no cambia el diseño, el navegador está cargando otro archivo HTML completamente diferente -->
+      
             <div id="pagination-controls" style="display: flex !important; justify-content: center !important; align-items: center !important; gap: 8px !important; margin-top: 40px !important; margin-bottom: 20px !important; width: 100% !important; background: transparent !important;">
-                <!-- Los botones se inyectan aquí -->
+               
             </div>
 
         </div>
     </main>
 </div>
 
-<!-- ================= MODAL: Agregar/Editar Producto ================= -->
 <div class="modal-overlay" id="modal-producto">
     <div class="modal">
         <div class="modal__header">
@@ -172,7 +170,7 @@
                     </button>
                 </div>
                 <div id="contenedor-ingredientes" style="max-height: 180px; overflow-y: auto; padding-right: 4px;">
-                    <!-- Dinámico -->
+        
                 </div>
             </div>
 
@@ -202,7 +200,6 @@
     </div>
 </div>
 
-<!-- ================= MODAL: Confirmar eliminación ================= -->
 <div class="modal-overlay" id="modal-eliminar">
     <div class="modal modal--delete">
         <div class="icon-warning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L2.5 18a1.6 1.6 0 001.4 2.4h16.2a1.6 1.6 0 001.4-2.4L13.7 3.9a1.6 1.6 0 00-2.8 0z"/></svg></div>
@@ -215,7 +212,6 @@
     </div>
 </div>
 
-<!-- ================= TOAST GLOBAL ================= -->
 <div class="toast" id="toast">
     <span class="icon-check">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
@@ -225,7 +221,6 @@
     <span id="toast-msg">Operación exitosa</span>
 </div>
 
-<!-- Enlace a tu archivo JS -->
 <script src="../js/productos.js"></script>
 </body>
 </html>
