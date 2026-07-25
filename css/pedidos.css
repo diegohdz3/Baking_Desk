@@ -319,7 +319,7 @@ tbody tr:hover{ background:var(--cream); }
     font-size: 0.95rem;
     font-weight: 500;
     color: var(--ink-soft);
-    background-color: #fdfdfd; /* Fondo ultraclaro y suave sin bordes */
+    background-color: #fdfdfd; 
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -334,7 +334,7 @@ tbody tr:hover{ background:var(--cream); }
 
 /* ================= ESTADO ACTIVO (BOTÓN SELECCIONADO) ================= */
 .pagination-btn.active {
-    background-color: var(--sidebar-hover); /* Sólido, limpio y unificado con tu marca */
+    background-color: var(--sidebar-hover); 
     color: var(--white) !important;
     font-weight: 600;
     box-shadow: 0 4px 10px -4px rgba(94, 143, 115, 0.4);
@@ -347,9 +347,7 @@ tbody tr:hover{ background:var(--cream); }
     opacity: 0.4;
     cursor: not-allowed;
 }
-/* =======================================================
-   BLOQUE DE PAGINACIÓN CORREGIDO (AISLADO Y SEGURO)
-   ======================================================= */
+/* BLOQUE DE PAGINACIÓN CORREGIDO (AISLADO Y SEGURO */
 
 /* Contenedor inferior de botones que está dentro de la tarjeta, debajo de la tabla */
 .card > div:last-child {
@@ -377,7 +375,7 @@ tbody tr:hover{ background:var(--cream); }
     /* Limpieza total de bordes duros antiguos */
     border: none !important;
     outline: none !important;
-    border-radius: 8px !important; /* Esquinas suavizadas idénticas a tu muestra */
+    border-radius: 8px !important; 
 
     cursor: pointer !important;
     transition: all 0.2s ease !important;
@@ -392,7 +390,7 @@ tbody tr:hover{ background:var(--cream); }
 /* Estado Activo: Soporta clase .active o atributo dinámico [active] */
 .card > div:last-child button.active,
 .card > div:last-child button[active] {
-    background-color: var(--sidebar-hover) !important; /* Tu verde suave de marca */
+    background-color: var(--sidebar-hover) !important; 
     color: var(--white) !important;
     font-weight: 600 !important;
     box-shadow: 0 4px 10px -4px rgba(94, 143, 115, 0.4) !important;
@@ -406,10 +404,7 @@ tbody tr:hover{ background:var(--cream); }
     cursor: not-allowed !important;
 }
 
-/* =========================================================
-   BUSCADORES DE CLIENTE Y PRODUCTO — Modal Nuevo Pedido
-   Versión visual refinada
-   ========================================================= */
+/* BUSCADORES DE CLIENTE Y PRODUCTO */
 .field-selector-buscable{
     position:relative;
     padding:13px;
@@ -609,9 +604,7 @@ tbody tr:hover{ background:var(--cream); }
     }
 }
 
-/* =========================================================
-   AJUSTE: buscadores sin márgenes exteriores
-   ========================================================= */
+/* AJUSTE: buscadores sin márgenes exteriores */
 .modal .field-selector-buscable{
     margin-left:0;
     margin-right:0;
