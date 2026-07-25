@@ -90,14 +90,14 @@ body{ margin:0; font-family:'Poppins', sans-serif; color:var(--ink); background:
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background: #f6d9de !important; /* Fuerza el fondo rosa */
+    background: #f6d9de !important; 
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 0.95rem;
-    color: #2f4534 !important;      /* <--- Fuerza las letras al verde oscuro de la marca */
+    color: #2f4534 !important;     
     flex-shrink: 0;
 }.sidebar__user-name{ font-size:0.88rem; font-weight:600; }
 .sidebar__user-role{ font-size:0.72rem; color:#EAF3ED; }
@@ -242,10 +242,9 @@ main{ padding:36px 44px; }
 }
 
 .sidebar__logo {
-    max-width: 160px; /* Ajusta el tamaño de tu logo si es necesario */
+    max-width: 160px; 
     height: auto;
     object-fit: contain;
-    /* Aplicamos la animación */
     animation: logoEntrance 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
@@ -287,8 +286,8 @@ main{ padding:36px 44px; }
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background-color: var(--error-soft); /* Fondo rosado pálido */
-    color: var(--error);                /* Color guinda/rojo del triángulo */
+    background-color: var(--error-soft);
+    color: var(--error);               
     display: flex;
     align-items: center;
     justify-content: center;
@@ -340,14 +339,11 @@ main{ padding:36px 44px; }
     transition: background .15s ease, transform .15s ease;
 }
 .btn-eliminar:hover {
-    background: #A6433A; /* Un tono un poco más oscuro al pasar el mouse */
+    background: #A6433A; 
     transform: translateY(-1px);
 }
 
-/* =========================================================
-   BUSCADOR DE CLIENTES — Modal Registrar Entrega
-   Versión refinada y sin márgenes exteriores
-   ========================================================= */
+/* BUSCADOR DE CLIENTES  */
 .field-cliente-buscable{
     position:relative;
     margin-left:0;
