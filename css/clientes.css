@@ -119,16 +119,16 @@ body{
     width:42px;
     height:42px;
     border-radius:50%;
-    background: var(--primary); /* Ahora tomará el hermoso rosa suave #f6d9de */
+    background: var(--primary); 
     display:flex;
     align-items:center;
     justify-content:center;
     font-family:'Poppins', sans-serif;
     font-weight:600;
     font-size:0.95rem;
-    color: var(--title); /* Mantiene las letras en el verde oscuro original (#2F4534) para un contraste perfecto */
+    color: var(--title); 
     flex-shrink:0;
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Un toque extra: un borde sutil para que resalte sobre el fondo verde */
+    border: 1px solid rgba(255, 255, 255, 0.3); 
 }
 .sidebar__user-name{ font-size:0.88rem; font-weight:600; }
 .sidebar__user-role{ font-size:0.72rem; color:#EAF4ED; }
@@ -654,10 +654,9 @@ button[type="submit"]:hover{
 }
 
 .sidebar__logo {
-    max-width: 160px; /* Ajusta el tamaño de tu logo si es necesario */
+    max-width: 160px; 
     height: auto;
     object-fit: contain;
-    /* Aplicamos la animación */
     animation: logoEntrance 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
@@ -707,7 +706,7 @@ button[type="submit"]:hover{
 }
 
 .btn-page.active {
-    background-color: #7fa885; /* Tu verde sutil característico */
+    background-color: #7fa885; 
     color: #ffffff;
 }
 
@@ -720,7 +719,7 @@ button[type="submit"]:hover{
 .avatar-circle {
     width: 32px;
     height: 32px;
-    background-color: #eadef7; /* Color morita pastel para las iniciales */
+    background-color: #eadef7; 
     color: #7d52b3;
     border-radius: 50%;
     display: inline-flex;
@@ -732,11 +731,10 @@ button[type="submit"]:hover{
 }
 
 .summary {
-    display: grid; /* (o flex, dependiendo de lo que ya tengas) */
+    display: grid; 
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 
-    /* ¡ESTAS SON LAS DOS LÍNEAS QUE DEBES AGREGAR! */
     margin-top: 24px;
     margin-bottom: 32px;
 }
