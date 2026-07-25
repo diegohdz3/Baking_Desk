@@ -29,11 +29,6 @@ document.querySelectorAll('.tab').forEach(tab => {
     });
 });
 
-
-// ============================================
-// TAB: GENERAL (Adaptado para Compactar Datos)
-// ============================================
-
 // Cargar Configuración General (GET)
 async function cargarConfiguracion() {
     try {
@@ -42,7 +37,6 @@ async function cargarConfiguracion() {
             const data = await response.json();
             document.getElementById('g-nombre').value = data.nombre || '';
 
-            // Intentamos parsear los datos extra empaquetados en descripcion
             try {
                 const infoExtra = JSON.parse(data.descripcion);
                 document.getElementById('g-telefono').value = infoExtra.telefono || '';
@@ -51,7 +45,7 @@ async function cargarConfiguracion() {
                 document.getElementById('g-horario').value = infoExtra.horario || '';
                 document.getElementById('g-descripcion').value = infoExtra.descripcion || '';
             } catch (e) {
-                // Si la base de datos tenía texto plano antiguo en datos_generales, cae aquí
+
                 document.getElementById('g-descripcion').value = data.descripcion || '';
             }
         }
@@ -64,7 +58,6 @@ async function cargarConfiguracion() {
 document.getElementById('form-general').addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Empaquetamos los campos extra dentro de un string JSON para guardarlos en "datos_generales"
     const infoExtra = {
         telefono: document.getElementById('g-telefono').value.trim(),
         correo: document.getElementById('g-correo').value.trim(),
@@ -75,7 +68,7 @@ document.getElementById('form-general').addEventListener('submit', async (e) => 
 
     const configData = {
         nombre: document.getElementById('g-nombre').value.trim(),
-        descripcion: JSON.stringify(infoExtra) // Se envía como texto al backend
+        descripcion: JSON.stringify(infoExtra)
     };
 
     try {
@@ -96,12 +89,6 @@ document.getElementById('form-general').addEventListener('submit', async (e) => 
     }
 });
 
-
-// ============================================
-// TAB: SEGURIDAD
-// ============================================
-
-// Cambiar Contraseña (PUT)
 document.getElementById('form-seguridad').addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -135,11 +122,6 @@ document.getElementById('form-seguridad').addEventListener('submit', async (e) =
     }
 });
 
-
-// ============================================
-// TAB: SESIONES
-// ============================================
-
 // Cargar Sesiones Activas (GET)
 async function cargarSesiones() {
     const lista = document.getElementById('lista-sesiones');
@@ -156,7 +138,6 @@ async function cargarSesiones() {
     }
 }
 
-// Renderizar HTML de Sesiones
 function renderListaSesiones(sesiones) {
     const lista = document.getElementById('lista-sesiones');
 
@@ -222,10 +203,9 @@ document.getElementById('btn-cerrar-todas').addEventListener('click', async () =
     }
 });
 
-// --- Cargar datos iniciales ---
+
 document.addEventListener('DOMContentLoaded', cargarConfiguracion);
 
-// ---- Transición al salir de la página ----
 const appEl = document.querySelector('.app');
 const DURACION_SALIDA = 200;
 
