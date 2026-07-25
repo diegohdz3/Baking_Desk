@@ -6,7 +6,7 @@
     <title>BakingDesk — Inventario</title>
     <link rel="stylesheet" href="../css/inventario.css">
 
-    <!-- Enlaces globales para el Toast -->
+   
     <link rel="stylesheet" href="../css/toast.css">
 
     <script src="../js/seguridad.js"></script>
@@ -15,13 +15,13 @@
 <body>
 
 <div class="app">
-    <!-- ================= SIDEBAR ================= -->
+
     <aside class="sidebar">
         <div class="sidebar__logo-container">
             <img src="../Screenshot_3.png" alt="Nieves Repostería" class="sidebar__logo">
         </div>
         <div class="sidebar__user">
-            <!-- 🌟 Identificadores para seguridad.js 🌟 -->
+      
             <div class="avatar" id="user-avatar">AS</div>
             <div>
                 <div class="sidebar__user-name" id="user-name-display">Adriana Suárez</div>
@@ -69,7 +69,7 @@
 
     <!-- ================= MAIN ================= -->
     <main>
-        <!-- Barra superior con botón de Surtir y Agregar Ingrediente -->
+    
         <div class="topbar">
             <h1>Inventario de Ingredientes</h1>
             <div style="display: flex; gap: 10px;">
@@ -109,21 +109,21 @@
             </div>
         </section>
 
-        <!-- ---- TABLA: INGREDIENTES ---- -->
+      
         <section class="card" id="panel-ingredientes">
             <table id="tabla-ingredientes">
                 <thead>
                 <tr><th>Nombre</th><th>Categoría</th><th>Stock</th><th>Unidad</th><th>Costo</th><th>Estado</th><th>Acciones</th></tr>
                 </thead>
                 <tbody id="tbody-ingredientes">
-                <!-- Los datos se cargarán dinámicamente aquí -->
+              
                 </tbody>
             </table>
         </section>
 
-        <!-- Contenedor dinámico de Paginación para Ingredientes -->
+     
         <div class="pagination-container" id="pagination-controls">
-            <!-- Los botones se inyectarán dinámicamente desde inventario.js -->
+         
         </div>
     </main>
 </div>
@@ -162,7 +162,7 @@
     </div>
 </div>
 
-<!-- ================= MODAL: Agregar/Editar Ingrediente ================= -->
+
 <div class="modal-overlay" id="modal-ingrediente">
     <div class="modal">
         <div class="modal__header">
@@ -190,7 +190,7 @@
     </div>
 </div>
 
-<!-- ================= MODAL: Ver Ingrediente ================= -->
+
 <div class="modal-overlay" id="modal-ver-ingrediente">
     <div class="modal">
         <div class="modal__header">
@@ -209,7 +209,7 @@
     </div>
 </div>
 
-<!-- ================= MODAL: Confirmar Eliminación ================= -->
+
 <div class="modal-overlay" id="modal-eliminar">
     <div class="modal modal--delete">
         <div class="icon-warning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L2.5 18a1.6 1.6 0 001.4 2.4h16.2a1.6 1.6 0 001.4-2.4L13.7 3.9a1.6 1.6 0 00-2.8 0z"/></svg></div>
@@ -222,7 +222,7 @@
     </div>
 </div>
 
-<!-- ================= TOAST GLOBAL ================= -->
+
 <div class="toast" id="toast">
     <span class="icon-check">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
