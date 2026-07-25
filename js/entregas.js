@@ -1,15 +1,13 @@
-// --- Configuración API ---
+
 const API_URL = 'http://35.171.239.148:7000/api/entregas';
 
 let entregasGlobal = [];
-let entregasPorFecha = {}; // { 'YYYY-MM-DD': [{}, {}] }
+let entregasPorFecha = {}; 
 let entregaEditId = null;
 let entregaDeleteId = null;
 
-// --- NUEVO: Cache global de clientes para consultar sus direcciones ---
 let clientesGlobal = [];
 
-// --- Configuración Calendario ---
 const hoy = new Date();
 let mesActual = hoy.getMonth();
 let anioActual = hoy.getFullYear();
@@ -17,7 +15,6 @@ let fechaSeleccionada = formatoFecha(hoy);
 
 const meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
-// --- Utilidades Modales / Toast ---
 function abrir(id){ document.getElementById(id).classList.add('is-open'); }
 function cerrar(id){ document.getElementById(id).classList.remove('is-open'); }
 document.querySelectorAll('[data-close]').forEach(btn => btn.addEventListener('click', () => cerrar(btn.dataset.close)));
@@ -34,7 +31,6 @@ function formatoFecha(d){
     return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
 
-// --- Cargar Entregas (GET) ---
 async function cargarEntregas() {
     try {
         const response = await fetch(API_URL);
@@ -42,7 +38,6 @@ async function cargarEntregas() {
 
         entregasGlobal = await response.json();
 
-        // Agrupar por fecha para el calendario
         entregasPorFecha = {};
         let stats = { pendiente: 0, confirmada: 0, entregada: 0, cancelada: 0 };
 
@@ -52,7 +47,6 @@ async function cargarEntregas() {
             }
             entregasPorFecha[ent.fecha].push(ent);
 
-            // Contabilizar estado general
             if (stats[ent.estado] !== undefined) stats[ent.estado]++;
         });
 
@@ -69,7 +63,6 @@ async function cargarEntregas() {
     }
 }
 
-// --- Actualizar Resumen Numérico ---
 function actualizarResumen(stats) {
     document.getElementById('val-pendientes').textContent = stats.pendiente;
     document.getElementById('val-confirmadas').textContent = stats.confirmada;
@@ -77,7 +70,6 @@ function actualizarResumen(stats) {
     document.getElementById('val-canceladas').textContent = stats.cancelada;
 }
 
-// --- Calendario ---
 function colorEstado(estado){
     return {
         pendiente:'#c98a3e',
@@ -147,7 +139,6 @@ document.getElementById('cal-next').addEventListener('click', () => {
     renderCalendario();
 });
 
-// --- Panel de Lista (Día seleccionado) ---
 function renderPanel(fechaStr) {
     const [y, m, d] = fechaStr.split('-');
     const fechaObj = new Date(y, m-1, d);
@@ -238,9 +229,9 @@ document.getElementById('form-entrega').addEventListener('submit', async (e) => 
     const clienteNombre = clienteSelect.options[clienteSelect.selectedIndex].text;
 
     const entregaData = {
-        // IMPORTANTE: Enviamos el cliente para que el backend busque un pedido correspondiente
-        cliente: clienteSelect.value, // Envía el ID ("5") o el nombre ("Diego Cortes") según la configuración
-        pedidoId: 0, // Le enviamos 0 para que el backend busque dinámicamente el pedido del cliente
+
+        cliente: clienteSelect.value, 
+        pedidoId: 0, 
         fecha: document.getElementById('e-fecha').value,
         hora: document.getElementById('e-hora').value,
         metodo: document.getElementById('e-metodo').value,
@@ -303,13 +294,11 @@ document.getElementById('btn-confirmar-eliminar').addEventListener('click', asyn
 
 // --- Iniciar ---
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Ejecutamos tu función actual para listar entregas
+
     cargarEntregas();
 
-    // 2. Cargamos los clientes registrados en el nuevo <select> del formulario
     cargarClientesEnSelector();
 
-    // 3. NUEVO: Agregar escuchadores de eventos para la dirección inteligente
     const clienteSelect = document.getElementById("e-cliente");
     const metodoSelect = document.getElementById("e-metodo");
 
@@ -320,7 +309,6 @@ document.addEventListener('DOMContentLoaded', () => {
         metodoSelect.addEventListener('change', autoRellenarDireccion);
     }
 
-    // Buscador por nombre. Solo filtra las opciones del selector existente.
     const buscadorCliente = document.getElementById("e-cliente-buscar");
 
     if (buscadorCliente && clienteSelect) {
@@ -332,8 +320,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 valorSeleccionado
             );
 
-            // Si el cliente seleccionado quedó fuera del filtro,
-            // se limpia también la dirección asociada.
             if (valorSeleccionado && !clienteSelect.value) {
                 autoRellenarDireccion();
             }
@@ -341,8 +327,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
-// ---- Buscador del selector de clientes ----
 function normalizarTextoCliente(texto) {
     return String(texto || '')
         .normalize('NFD')
@@ -392,12 +376,10 @@ function reiniciarBuscadorClientes(valorSeleccionado = '') {
     renderizarOpcionesClientes('', valorSeleccionado);
 }
 
-// ---- Función para llenar el selector de clientes ----
 function cargarClientesEnSelector() {
     const clienteSelect = document.getElementById("e-cliente");
     if (!clienteSelect) return;
 
-    // Apuntamos directo a tu IP de Javalin en el puerto 7000
     const CLIENTES_API_URL = 'http://35.171.239.148:7000/api/clientes';
 
     fetch(CLIENTES_API_URL)
@@ -408,10 +390,8 @@ function cargarClientesEnSelector() {
             return response.json();
         })
         .then(clientes => {
-            // Guardamos todos los clientes y sus atributos en nuestra variable global cacheada
             clientesGlobal = clientes;
 
-            // El buscador usa esta misma lista obtenida del backend.
             renderizarOpcionesClientes(
                 document.getElementById("e-cliente-buscar")?.value || ''
             );
@@ -421,7 +401,6 @@ function cargarClientesEnSelector() {
         });
 }
 
-// ---- Función para actualizar el selector de direcciones dinámicamente ----
 function autoRellenarDireccion() {
     const clienteSelect = document.getElementById("e-cliente");
     const metodoSelect = document.getElementById("e-metodo");
@@ -432,19 +411,16 @@ function autoRellenarDireccion() {
     const clienteId = parseInt(clienteSelect.value);
     const metodoSelected = metodoSelect.value;
 
-    // Limpiamos las opciones anteriores
     direccionSelect.innerHTML = '';
 
-    // 1. Si el método es Recolección
     if (metodoSelected === 'recoleccion') {
         const optionRecoleccion = document.createElement("option");
         optionRecoleccion.value = "Recolección en tienda / local";
         optionRecoleccion.textContent = "Recolección en tienda / local";
         optionRecoleccion.selected = true;
         direccionSelect.appendChild(optionRecoleccion);
-        direccionSelect.disabled = true; // Lo bloqueamos porque es la única opción
+        direccionSelect.disabled = true; 
     }
-    // 2. Si el método es a Domicilio
     else {
         direccionSelect.disabled = false;
 
@@ -452,7 +428,6 @@ function autoRellenarDireccion() {
             const clienteEncontrado = clientesGlobal.find(c => c.id === clienteId);
 
             if (clienteEncontrado && clienteEncontrado.direccion && clienteEncontrado.direccion.trim() !== "") {
-                // Opción por defecto para obligar a seleccionar
                 const optionPlaceholder = document.createElement("option");
                 optionPlaceholder.value = "";
                 optionPlaceholder.textContent = "-- Seleccione la dirección del cliente --";
@@ -460,13 +435,11 @@ function autoRellenarDireccion() {
                 optionPlaceholder.selected = true;
                 direccionSelect.appendChild(optionPlaceholder);
 
-                // Agregamos la dirección registrada del cliente
                 const optionDir = document.createElement("option");
                 optionDir.value = clienteEncontrado.direccion;
                 optionDir.textContent = clienteEncontrado.direccion;
                 direccionSelect.appendChild(optionDir);
             } else {
-                // Si el cliente no tiene dirección registrada
                 const optionSinDir = document.createElement("option");
                 optionSinDir.value = "";
                 optionSinDir.textContent = "El cliente no tiene dirección registrada";
@@ -475,7 +448,6 @@ function autoRellenarDireccion() {
                 direccionSelect.appendChild(optionSinDir);
             }
         } else {
-            // Si aún no se selecciona ningún cliente
             const optionSeleccione = document.createElement("option");
             optionSeleccione.value = "";
             optionSeleccione.textContent = "-- Seleccione primero un cliente --";
@@ -488,7 +460,7 @@ function autoRellenarDireccion() {
 
 // ---- Transición al salir de la página ----
 const appEl = document.querySelector('.app');
-const DURACION_SALIDA = 200; // debe coincidir con pageFadeOut del CSS
+const DURACION_SALIDA = 200; 
 
 function navegarCon(url) {
     if (!appEl) return;
