@@ -1,10 +1,7 @@
-// --- Configuración API ---
 const API_URL = 'http://35.171.239.148:7000/api/dashboard';
 
-// --- Elementos del DOM ---
 const tbody = document.getElementById('tabla-body');
 
-// --- Formateadores ---
 const formatearMoneda = (valor) => new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(valor);
 const formatearK = (valor) => valor >= 1000 ? `$${(valor/1000).toFixed(1)}k` : `$${valor}`;
 
@@ -13,7 +10,6 @@ document.getElementById('today').textContent = new Date().toLocaleDateString('es
     weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
 });
 
-// --- Cargar Dashboard (GET) ---
 async function cargarDashboard() {
     try {
         const response = await fetch(API_URL);
@@ -21,10 +17,8 @@ async function cargarDashboard() {
 
         const data = await response.json();
 
-        // Animamos los contadores principales
         animarStats(data.stats);
 
-        // Renderizamos las tablas y gráficas
         renderTabla(data.pedidosRecientes);
         renderGraficoVentas(data.ventasSemana);
         renderGraficoDona(data.pedidosEstado);
@@ -39,7 +33,6 @@ async function cargarDashboard() {
     }
 }
 
-// --- Actualizar Tarjetas de Resumen (Sin animación, disponible por si se necesita) ---
 function actualizarStats(stats) {
     if (!stats) return;
     document.getElementById('stat-pedidos').textContent = stats.pedidosHoy || 0;
@@ -48,7 +41,6 @@ function actualizarStats(stats) {
     document.getElementById('stat-clientes').textContent = stats.clientes || 0;
 }
 
-// --- Renderizar Tabla de Pedidos Recientes ---
 function renderTabla(pedidos) {
     if (!tbody) return;
     tbody.innerHTML = '';
@@ -63,7 +55,6 @@ function renderTabla(pedidos) {
     pedidos.forEach((pedido, i) => {
         const tr = document.createElement('tr');
 
-        // Mapeo de clases CSS para el estado
         const badgeClasses = {
             'nuevo': 'nuevo',
             'en curso': 'en-curso',
@@ -86,13 +77,11 @@ function renderTabla(pedidos) {
     });
 }
 
-// --- Renderizar Gráfico SVG (Ventas de la semana) ---
 function renderGraficoVentas(ventasArray) {
     if (!ventasArray || ventasArray.length !== 7) return;
 
     const maxVenta = Math.max(...ventasArray, 100);
 
-    // Actualizamos las etiquetas HTML (suponiendo que son IDs externos al SVG)
     document.getElementById('lbl-max').textContent = formatearK(maxVenta);
     document.getElementById('lbl-mid').textContent = formatearK(maxVenta / 2);
 
@@ -127,17 +116,13 @@ function renderGraficoVentas(ventasArray) {
         gPoints.appendChild(circle);
     });
 
-    // =========================================================
-    // TÍTULOS DE LOS EJES (Añadidos dinámicamente al SVG padre)
-    // =========================================================
-    const svg = polygon.ownerSVGElement; // Obtenemos el <svg> que contiene el polígono
 
-    // Limpiamos los títulos si es que la función se llama varias veces (evita que se encimen)
+    const svg = polygon.ownerSVGElement; 
+
     svg.querySelectorAll('.eje-titulo').forEach(el => el.remove());
 
-    // Etiqueta Eje Y (Valores / Monto)
     const tituloEjeY = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    // Lo empujamos a la izquierda (-15) para que no choque con tus labels de $100, $50, $0
+
     tituloEjeY.setAttribute('transform', 'translate(-15, 90) rotate(-90)');
     tituloEjeY.setAttribute('font-size', '11');
     tituloEjeY.setAttribute('font-weight', '600');
@@ -148,10 +133,10 @@ function renderGraficoVentas(ventasArray) {
     tituloEjeY.textContent = 'Valores (Monto en MXN)';
     svg.appendChild(tituloEjeY);
 
-    // Etiqueta Eje X (Categorías / Días)
+    // Etiqueta Eje X 
     const tituloEjeX = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    tituloEjeX.setAttribute('x', '305'); // Centro horizontal aproximado
-    tituloEjeX.setAttribute('y', '230'); // Lo bajamos por debajo de la línea y de los días
+    tituloEjeX.setAttribute('x', '305'); 
+    tituloEjeX.setAttribute('y', '230'); 
     tituloEjeX.setAttribute('font-size', '11');
     tituloEjeX.setAttribute('font-weight', '600');
     tituloEjeX.setAttribute('fill', '#9c968e');
@@ -160,7 +145,6 @@ function renderGraficoVentas(ventasArray) {
     tituloEjeX.classList.add('eje-titulo');
     tituloEjeX.textContent = 'Categorías (Días de la semana)';
     svg.appendChild(tituloEjeX);
-    // =========================================================
 
     polygon.style.opacity = '0';
 
@@ -177,7 +161,6 @@ function renderGraficoVentas(ventasArray) {
     }));
 }
 
-// --- Renderizar Gráfico de Dona SVG (Estados de pedido) ---
 function renderGraficoDona(estados) {
     if (!estados) return;
 
@@ -216,9 +199,6 @@ function renderGraficoDona(estados) {
     });
 }
 
-// =========================================================================
-// Animaciones Generales
-// =========================================================================
 
 function contarHasta(id, valorFinal, formatear) {
     const el = document.getElementById(id);
@@ -244,9 +224,6 @@ function animarStats(stats) {
     contarHasta('stat-clientes', stats.clientes || 0, v => Math.round(v));
 }
 
-// =========================================================================
-// Transición de entrada/salida y Gestión de Menú / Cierre de sesión
-// =========================================================================
 
 const appEl = document.querySelector('.app');
 const DURACION_SALIDA = 200;
@@ -263,15 +240,12 @@ document.querySelectorAll('.nav__item, .nav__logout, #btn-logout').forEach(link 
         if (link.tagName === 'A' || link.closest('a')) {
             e.preventDefault();
 
-            // Si es cerrar sesión
             if (link.classList.contains('nav__logout') || link.id === 'btn-logout') {
                 localStorage.removeItem('user_role');
                 localStorage.removeItem('user_name');
 
-                // 🌟 ¡AQUÍ ESTÁ EL CAMBIO! Cambia 'index.html' por 'login.html' 🌟
                 navegarCon('login.html');
             } else {
-                // Navegación normal
                 const destino = link.getAttribute('href') || link.closest('a').getAttribute('href');
                 if (destino) navegarCon(destino);
             }
@@ -279,16 +253,14 @@ document.querySelectorAll('.nav__item, .nav__logout, #btn-logout').forEach(link 
     });
 });
 
-// =========================================================================
-// Guardián de Sesión y Carga Inicial
-// =========================================================================
+
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Leer los datos del usuario logueado
+
     const userRole = localStorage.getItem('user_role');
     const userName = localStorage.getItem('user_name');
 
-    // 2. Si no hay rol, no está logueado -> Expulsar al login correcto (login.html)
+
     if (!userRole) {
         window.location.href = 'login.html';
         return;
@@ -299,19 +271,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const nameDisplay = document.getElementById('user-name-display');
     const roleDisplay = document.getElementById('user-role-display');
 
-    // 3. Mostrar el nombre real del usuario que inició sesión
     if (nameDisplay && userName) {
         nameDisplay.textContent = userName;
     }
 
-    // 4. Modo Ayudante: Personalizar interfaz y ocultar módulos prohibidos
     if (userRole === 'ayudante' || userRole === '2') {
 
-        // 🌟 Cambiamos dinámicamente los datos del ayudante
         if (avatarDisplay) avatarDisplay.textContent = 'AN';
         if (roleDisplay) roleDisplay.textContent = 'Ayudante de cocina';
 
-        // Removemos los accesos a Finanzas y Configuración
         const menuFinanzas = document.querySelector('a[href*="finanzas.html"]');
         const menuConfiguracion = document.querySelector('a[href*="configuracion.html"]');
 
@@ -319,11 +287,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (menuConfiguracion) menuConfiguracion.remove();
 
     } else {
-        // Si es Administrador, aseguramos sus datos por defecto
         if (avatarDisplay) avatarDisplay.textContent = 'AS';
         if (roleDisplay) roleDisplay.textContent = 'Administradora';
     }
 
-    // 5. Si pasó las pruebas de seguridad, cargar los datos de la API
     cargarDashboard();
 });
