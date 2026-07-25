@@ -68,14 +68,14 @@ body{ margin:0; font-family:'Poppins', sans-serif; color:var(--ink); background:
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background: #f6d9de !important; /* Fuerza el fondo rosa */
+    background: #f6d9de !important; 
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 0.95rem;
-    color: #2f4534 !important;      /* <--- Fuerza las letras al verde oscuro de la marca */
+    color: #2f4534 !important;     
     flex-shrink: 0;
 }.sidebar__user-name{ font-size:0.88rem; font-weight:600; }
 .sidebar__user-role{ font-size:0.72rem; color:var(--sage-200); }
