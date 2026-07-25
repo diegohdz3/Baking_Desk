@@ -71,7 +71,7 @@ body{
     min-height:100vh;
 }
 
-/* ---- NUEVO: transición de entrada/salida de la página ---- */
+/* transición de entrada/salida de la página ---- */
 @keyframes pageFadeIn{
     from{ opacity:0; transform:translateY(8px); }
     to{ opacity:1; transform:translateY(0); }
@@ -83,7 +83,7 @@ body{
 .app{ animation:pageFadeIn .35s ease both; }
 .app.is-leaving{ animation:pageFadeOut .2s ease both; pointer-events:none; }
 
-/* ================= SIDEBAR ================= */
+/*SIDEBAR */
 .sidebar{
     background:var(--sidebar);
     color:var(--cream);
@@ -106,14 +106,14 @@ body{
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background: #f6d9de !important; /* Fuerza el fondo rosa */
+    background: #f6d9de !important; 
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 0.95rem;
-    color: #2f4534 !important;      /* <--- Fuerza las letras al verde oscuro de la marca */
+    color: #2f4534 !important;     
     flex-shrink: 0;
 }
 
@@ -247,15 +247,12 @@ main{ padding:36px 44px; }
 }
 .link-muted:hover{ text-decoration:underline; }
 
-/* ---- NUEVO: animación de las gráficas generándose ---- */
+/* ---- animación de las gráficas generándose ---- */
 
-/* línea de "Ventas de la semana": se dibuja de izquierda a derecha */
+
 #chart-line{ transition: stroke-dashoffset .9s ease; }
-
-/* área bajo la línea: aparece con fade después de que la línea se dibuja */
 #chart-polygon{ transition: opacity .6s ease .5s; }
 
-/* puntos de la línea: pop escalonado */
 .chart-dot{
     transform-box: fill-box;
     transform-origin: center;
@@ -352,10 +349,9 @@ tbody tr:hover{ background:var(--cream); }
 }
 
 .sidebar__logo {
-    max-width: 160px; /* Ajusta el tamaño de tu logo si es necesario */
+    max-width: 160px;
     height: auto;
     object-fit: contain;
-    /* Aplicamos la animación */
     animation: logoEntrance 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
