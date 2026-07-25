@@ -101,21 +101,20 @@ body{
 
 /* === BLOQUE MODIFICADO: Ajustes del contenedor del logo === */
 .brand__mark{
-  /* Eliminamos flex y align-items antiguos */
-  width: auto; /* Dejamos que el ancho se adapte a la imagen */
-  height: 70px; /* Definimos una altura máxima para el área del logo */
-  margin: 0 auto 10px; /* Margen inferior reducido */
-  display: block; /* Volvemos a bloque */
+  width: auto; 
+  height: 70px; 
+  margin: 0 auto 10px; 
+  display: block; 
 }
 
 /* === BLOQUE MODIFICADO: Nuevos estilos para la imagen del logo === */
 .brand__logo-img {
-  max-height: 100%; /* La imagen se ajusta al alto del contenedor brand__mark */
-  width: auto; /* Mantiene la proporción */
+  max-height: 100%; 
+  width: auto; 
   display: block;
-  margin: 0 auto; /* Centrado horizontal */
+  margin: 0 auto;
 
-  /* Animación de latido sutil y elegante */
+
   animation: logoPulse 2.5s ease-in-out infinite;
 }
 
@@ -125,7 +124,6 @@ body{
   50% { transform: scale(1.05); filter: drop-shadow(0 0 8px rgba(255,255,255,0.3)); }
   100% { transform: scale(1); filter: drop-shadow(0 0 0px rgba(255,255,255,0)); }
 }
-/* ========================================================== */
 
 .brand__title{
   font-family:'Poppins', sans-serif;
@@ -324,7 +322,7 @@ h2.form-title{
   .card{ animation:none; }
   .sprinkle{ animation:none; }
   .client-image-animated{ animation:none; }
-  .brand__logo-img { animation: none; } /* Desactivar pulso del logo */
+  .brand__logo-img { animation: none; } 
 }
 
 @media (max-width: 800px){
