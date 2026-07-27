@@ -1,4 +1,3 @@
-// toast.js
 window.mostrarToast = function(mensaje) {
     const toast = document.getElementById('toast');
     const toastMsg = document.getElementById('toast-msg');
@@ -8,18 +7,14 @@ window.mostrarToast = function(mensaje) {
         return;
     }
 
-    // Actualizamos el texto
     toastMsg.textContent = mensaje;
 
-    // Mostramos el toast
     toast.classList.add('is-visible');
 
-    // Reiniciamos el temporizador por si se llamó a la función varias veces rápido
     if (window.toastTimeout) {
         clearTimeout(window.toastTimeout);
     }
 
-    // Lo ocultamos después de 3.2 segundos
     window.toastTimeout = setTimeout(() => {
         toast.classList.remove('is-visible');
     }, 3200);
