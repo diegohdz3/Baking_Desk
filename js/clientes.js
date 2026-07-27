@@ -5,23 +5,23 @@ const formCliente   = document.getElementById('form-cliente');
 const modalTitulo   = document.getElementById('modal-titulo');
 const tbody         = document.querySelector('#tabla-clientes tbody');
 let filaAEliminar = null;
-let idEnEdicion = null;   // null = nuevo, número = editando
+let idEnEdicion = null;   
 
 // ---- VARIABLES GLOBALES PARA PAGINACIÓN Y FILTRADO ----
 let paginaActual = 1;
 const filasPorPagina = 8;
-let todosLosClientes = [];      // Almacén crudo del servidor
-let clientesFiltrados = [];     // Almacén que pasó filtros y se paginará
+let todosLosClientes = [];     
+let clientesFiltrados = [];    
 
-// ---- Cargar clientes desde la BD ----
+
 async function cargarClientes() {
     try {
         const res = await fetch(API);
         todosLosClientes = await res.json();
 
-        // Inicialmente, los clientes filtrados son todos los obtenidos
+        
         clientesFiltrados = [...todosLosClientes];
-        paginaActual = 1; // Reseteamos a la página 1 al recargar
+        paginaActual = 1; 
 
         actualizarResumen(todosLosClientes);
         renderizarTabla();
@@ -67,17 +67,14 @@ function renderizarTabla() {
         </tr>`;
     });
 
-    // Volver a vincular eventos de botones y pintar la botonera inferior
     engancharBotones();
     renderizarControlesPaginacion();
 }
 
-// ---- Crear e inyectar botones de Páginas (< 1 2 3 >) ----
 function renderizarControlesPaginacion() {
     const contenedorPaginas = document.getElementById('pagination-container');
     const totalPaginas = Math.ceil(clientesFiltrados.length / filasPorPagina);
 
-    // Ocultar si no hay páginas suficientes (8 clientes o menos)
     if (totalPaginas <= 1) {
         contenedorPaginas.innerHTML = '';
         return;
@@ -106,13 +103,11 @@ function renderizarControlesPaginacion() {
     contenedorPaginas.innerHTML = htmlControles;
 }
 
-// Interrupción de clic en botonera
 function cambiarDePagina(numeroPagina) {
     paginaActual = numeroPagina;
     renderizarTabla();
 }
 
-// ---- Actualizar tarjetas de resumen ----
 function actualizarResumen(clientes) {
     const total     = clientes.length;
     const activos   = clientes.filter(c => c.estado === 'activo').length;
@@ -133,7 +128,7 @@ document.getElementById('btn-open-new').addEventListener('click', () => {
 
 // ---- Enganchar botones editar + eliminar de cada fila ----
 function engancharBotones() {
-    // EDITAR: precarga los datos en el modal
+
     document.querySelectorAll('.icon-btn.edit').forEach(btn => {
         btn.addEventListener('click', () => {
             const f = btn.closest('tr');
@@ -147,7 +142,7 @@ function engancharBotones() {
             modalCliente.classList.add('is-open');
         });
     });
-    // ELIMINAR: marca la fila
+   
     document.querySelectorAll('.icon-btn.delete').forEach(btn => {
         btn.addEventListener('click', () => {
             filaAEliminar = btn.closest('tr');
@@ -160,7 +155,6 @@ function engancharBotones() {
 formCliente.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Obtenemos el valor del correo. Si está vacío, le asignamos por defecto un guión "-"
     let emailValue = document.getElementById('m-email').value.trim();
     if (emailValue === '') {
         emailValue = '-';
@@ -198,7 +192,6 @@ formCliente.addEventListener('submit', async (e) => {
     }
 });
 
-// ---- Confirmar eliminación (DELETE real) ----
 document.getElementById('btn-confirmar-eliminar').addEventListener('click', async () => {
     if (!filaAEliminar) return;
     const id = filaAEliminar.dataset.id;
@@ -209,25 +202,23 @@ document.getElementById('btn-confirmar-eliminar').addEventListener('click', asyn
 
         modalEliminar.classList.remove('is-open');
 
-        // 🌟 AQUÍ MANDAMOS LLAMAR LA NOTIFICACIÓN TOAST
+       
         mostrarToast('Cliente eliminado');
 
         filaAEliminar = null;
-        cargarClientes(); // recarga tabla + resumen
+        cargarClientes(); 
     } catch (err) {
         alert('No se pudo eliminar el cliente. Revisa que el servidor esté corriendo.');
         console.error(err);
     }
 });
 
-// ---- Cerrar modales ----
 document.getElementById('btn-cancelar-cliente').addEventListener('click', () => modalCliente.classList.remove('is-open'));
 document.getElementById('btn-cancelar-eliminar').addEventListener('click', () => { filaAEliminar = null; modalEliminar.classList.remove('is-open'); });
 [modalCliente, modalEliminar].forEach(overlay => {
     overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('is-open'); });
 });
 
-// ---- Filtro nativo de memoria integrado a paginación ----
 document.getElementById('btn-filtrar').addEventListener('click', () => {
     const texto  = document.getElementById('f-buscar').value.trim().toLowerCase();
     const estado = document.getElementById('f-estado').value;
@@ -246,7 +237,6 @@ document.getElementById('btn-filtrar').addEventListener('click', () => {
     renderizarTabla();
 });
 
-// ---- Transición al salir de la página ----
 const appEl = document.querySelector('.app');
 const DURACION_SALIDA = 200;
 
