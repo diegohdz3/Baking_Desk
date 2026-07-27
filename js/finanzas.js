@@ -1,19 +1,12 @@
-// =========================================================================
-// CONFIGURACIÓN API Y ESTADO GLOBAL
-// =========================================================================
 const API_URL = 'http://35.171.239.148:7000/api/finanzas';
 const API_TOP_VENTAS_URL = 'http://35.171.239.148:7000/api/finanzas/top-ventas';
 
-// Elementos del DOM
 const tbody = document.getElementById('tabla-body');
 
-// Variables globales para la memoria y gráfica
+
 let movimientosGlobal = [];
 let periodoActualGrafica = 'mes';
 
-// =========================================================================
-// CARGA INICIAL DE DATOS (GET)
-// =========================================================================
 async function cargarFinanzas() {
     try {
         const response = await fetch(API_URL);
@@ -64,9 +57,6 @@ const formatearMoneda = (valor) => {
     return new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(valor || 0);
 };
 
-// =========================================================================
-// RENDERIZADO DE TABLA (SOLO LECTURA)
-// =========================================================================
 function renderTabla(movimientos) {
     if (!tbody) return;
     tbody.innerHTML = '';
@@ -100,9 +90,6 @@ function renderTabla(movimientos) {
     });
 }
 
-// =========================================================================
-// TARJETAS SUPERIORES (KPIs)
-// =========================================================================
 function calcularResumen(movimientos) {
     let totalIngresos = 0;
     let totalGastos = 0;
@@ -127,9 +114,7 @@ function calcularResumen(movimientos) {
     if (elMargen) elMargen.textContent = `${margen}%`;
 }
 
-// =========================================================================
 // LÓGICA DE TIEMPOS Y AGRUPACIÓN PARA GRÁFICAS
-// =========================================================================
 
 function obtenerUltimos7Dias() {
     const mesesCortos = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
@@ -185,7 +170,6 @@ function parseFechaLocal(fechaStr) {
 function agruparPorDia(movimientos, diasInfo) {
     return diasInfo.map(d => {
         const delDia = movimientos.filter(mov => {
-            // Se prioriza la fecha de entrega sobre la de creación
             const fechaUsar = mov.fecha_entrega || mov.fechaEntrega || mov.fecha;
             const f = parseFechaLocal(fechaUsar);
             return f.getFullYear() === d.year && f.getMonth() === d.month && f.getDate() === d.date;
@@ -213,7 +197,6 @@ function agruparPorMes(movimientos, mesesInfo) {
 function agruparPorAno(movimientos, anosInfo) {
     return anosInfo.map(a => {
         const delAno = movimientos.filter(mov => {
-            // Se prioriza la fecha de entrega sobre la de creación
             const fechaUsar = mov.fecha_entrega || mov.fechaEntrega || mov.fecha;
             const f = parseFechaLocal(fechaUsar);
             return f.getFullYear() === a.year;
@@ -246,9 +229,9 @@ function cambiarPeriodo(tipo) {
     }
 }
 
-// =========================================================================
+
 // RENDERIZADO DE GRÁFICA DE BARRAS PRINCIPAL
-// =========================================================================
+
 
 function crearBarra(x, y, width, height, fill, delayMs) {
     const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
@@ -409,9 +392,9 @@ function renderGraficaBarras(movimientos) {
     }));
 }
 
-// =========================================================================
+
 // OTRAS GRÁFICAS (Proyección y Dona Top 5)
-// =========================================================================
+
 function proyectarValores(valores) {
     const n = valores.length;
     if (n < 2) return [valores[n - 1] || 0, valores[n - 1] || 0];
@@ -526,9 +509,8 @@ function renderGraficaPrediccion(movimientos) {
     }));
 }
 
-// =========================================================================
 // RENDERIZADO CORREGIDO Y ROBUSTO DE D DONA (TOP PRODUCTOS)
-// =========================================================================
+
 function renderGraficaDona(productosApi) {
     const listaContenedor = document.getElementById('top-productos-lista');
     const donutSvg = document.getElementById('donut-svg');
@@ -545,10 +527,9 @@ function renderGraficaDona(productosApi) {
         return;
     }
 
-    // Colores corporativos para la gráfica
+    
     const coloresProductos = ["#C15C7A", "#7fa885", "#c98a3e", "#63A9E8", "#c294d6"];
 
-    // 1. Mapeo flexible de las propiedades devueltas por el Backend
     let topProductos = productosApi.slice(0, 5).map((prod, index) => {
         const nombre = prod.nombreProducto || prod.nombre || prod.producto || `Producto ${index + 1}`;
         const ingresoGenerado = parseFloat(prod.totalIngresos || prod.montoTotal || prod.total || prod.ingresoGenerado || prod.monto || 0);
@@ -561,10 +542,9 @@ function renderGraficaDona(productosApi) {
         };
     });
 
-    // 2. Sumatoria total para cálculo dinámico del porcentaje (si falta)
     const sumaTotalIngresos = topProductos.reduce((sum, p) => sum + p.ingresoGenerado, 0);
 
-    // 3. Asignación/Cálculo final del porcentaje
+
     topProductos = topProductos.map(prod => {
         let porcentajeFinal = prod.porcentajeServer;
         if (porcentajeFinal === null) {
@@ -576,12 +556,11 @@ function renderGraficaDona(productosApi) {
         };
     });
 
-    // 4. Configurar viewBox en el SVG para evitar deformaciones escalables
     donutSvg.setAttribute('viewBox', '0 0 240 240');
 
     let dashOffsetAcumulado = 0;
     const radio = 80;
-    const circunferenciaTotal = 2 * Math.PI * radio; // ~502.65
+    const circunferenciaTotal = 2 * Math.PI * radio; 
 
     const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
     g.setAttribute("transform", "rotate(-90 120 120)");
@@ -591,7 +570,6 @@ function renderGraficaDona(productosApi) {
         const color = coloresProductos[index % coloresProductos.length];
         const porcentaje = prod.porcentaje || 0;
 
-        // Renderizar item en la lista lateral
         const itemDiv = document.createElement('div');
         itemDiv.className = 'product-item';
         itemDiv.innerHTML = `
@@ -606,13 +584,11 @@ function renderGraficaDona(productosApi) {
         `;
         listaContenedor.appendChild(itemDiv);
 
-        // Disparar animación de la barra
         setTimeout(() => {
             const barra = itemDiv.querySelector('.product-bar-fill');
             if (barra) barra.classList.add('is-visible');
         }, 100 + (index * 50));
 
-        // Renderizar el arco/segmento SVG en la Dona
         if (sumaTotalIngresos > 0 && porcentaje > 0) {
             const dashArrayValue = (porcentaje / 100) * circunferenciaTotal;
             const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
@@ -633,9 +609,8 @@ function renderGraficaDona(productosApi) {
     });
 }
 
-// =========================================================================
 // ANIMACIONES ADICIONALES (Contadores y Navegación)
-// =========================================================================
+
 function animarContadores(movimientos) {
     let totIng = 0, totGas = 0;
     movimientos.forEach(mov => {
