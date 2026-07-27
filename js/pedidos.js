@@ -1,26 +1,22 @@
-// --- Configuración API ---
 const BASE_API_URL = 'http://35.171.239.148:7000/api';
 const API_URL = `${BASE_API_URL}/pedidos`;
 
-// --- VARIABLES GLOBALES PARA PAGINACIÓN Y FILTRADO ---
 let paginaActual = 1;
 const filasPorPagina = 8;
-let pedidosGlobal = [];       // Almacén crudo del servidor
-let pedidosFiltrados = [];     // Almacén que pasó filtros y se paginará
+let pedidosGlobal = [];       
+let pedidosFiltrados = [];    
 
 let clientesGlobal = [];
 let productosGlobal = [];
 let pedidoEnEdicionId = null;
 let pedidoAEliminarId = null;
 
-// --- Elementos del DOM ---
 const tbody = document.getElementById('tabla-body');
 const modalPedido = document.getElementById('modal-pedido');
 const modalEliminar = document.getElementById('modal-eliminar');
 const formPedido = document.getElementById('form-pedido');
 const modalTitulo = document.getElementById('modal-titulo');
 
-// Selectores del formulario del modal
 const selectCliente = document.getElementById('m-cliente');
 const selectProducto = document.getElementById('m-producto');
 const inputBuscarCliente = document.getElementById('m-cliente-buscar');
@@ -28,10 +24,8 @@ const inputBuscarProducto = document.getElementById('m-producto-buscar');
 const inputCantidad = document.getElementById('m-cantidad');
 const inputTotal = document.getElementById('m-total');
 
-// --- Formateador de Moneda ---
 const formatearMoneda = (valor) => new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(valor);
 
-// --- Buscadores de Cliente y Producto ---
 function normalizarTextoBusqueda(texto) {
     return String(texto || '')
         .normalize('NFD')
@@ -137,7 +131,6 @@ function reiniciarBuscadoresPedido(
     renderizarOpcionesProductos('', productoSeleccionado);
 }
 
-// --- Cargar Catálogos Iniciales ---
 async function cargarCatalogos() {
     try {
         const [resClientes, resProductos] = await Promise.all([
@@ -168,7 +161,6 @@ async function cargarCatalogos() {
     }
 }
 
-// --- Escuchar cambios para calcular el Total en tiempo real ---
 function recalcularTotal() {
     const productoId = selectProducto.value;
     const cantidad = parseInt(inputCantidad.value) || 1;
@@ -215,7 +207,6 @@ if (inputBuscarProducto) {
     });
 }
 
-// --- Cargar Pedidos (GET) ---
 async function cargarPedidos() {
     try {
         const response = await fetch(API_URL);
@@ -224,7 +215,6 @@ async function cargarPedidos() {
         pedidosGlobal = await response.json();
         console.log("Pedidos cargados desde el servidor:", pedidosGlobal);
 
-        // Al recargar, inicializamos los datos filtrados en memoria
         pedidosFiltrados = [...pedidosGlobal];
         paginaActual = 1;
 
@@ -238,7 +228,6 @@ async function cargarPedidos() {
     }
 }
 
-// --- Renderizar Tabla Con Paginación Nativa ---
 function renderTabla() {
     tbody.innerHTML = '';
 
@@ -250,7 +239,6 @@ function renderTabla() {
         return;
     }
 
-    // Segmentación de registros de 8 en 8
     const indiceInicio = (paginaActual - 1) * filasPorPagina;
     const indiceFin = indiceInicio + filasPorPagina;
     const pedidosPagina = pedidosFiltrados.slice(indiceInicio, indiceFin);
@@ -258,7 +246,6 @@ function renderTabla() {
     pedidosPagina.forEach(pedido => {
         const pedidoId = pedido.id || pedido.idPedido || '---';
 
-        // Detectar Nombre del Cliente
         let clienteNombre = '—';
         if (pedido.nombreCliente) {
             clienteNombre = pedido.nombreCliente;
@@ -268,7 +255,6 @@ function renderTabla() {
             clienteNombre = pedido.cliente;
         }
 
-        // Detectar Nombre del Producto
         let productoNombre = '—';
         if (pedido.nombreProducto) {
             productoNombre = pedido.nombreProducto;
@@ -283,7 +269,6 @@ function renderTabla() {
 
         const fechaPedido = pedido.fechaEntrega || pedido.fecha || '—';
 
-        // Determinar clase de badge según estado
         const estadoRaw = (pedido.estado || 'nuevo').toLowerCase().replace(' ', '-');
         const badgeClases = {
             'nuevo': 'nuevo',
@@ -321,7 +306,6 @@ function renderTabla() {
     renderizarControlesPaginacion();
 }
 
-// --- Generar Botonera de Paginación (< 1 2 3 >) ---
 function renderizarControlesPaginacion() {
     const contenedorPaginas = document.getElementById('pagination-container');
     if (!contenedorPaginas) return;
@@ -361,7 +345,6 @@ window.cambiarDePagina = function(numeroPagina) {
     renderTabla();
 };
 
-// --- Actualizar Resumen Numérico ---
 function actualizarResumen(pedidos) {
     const elTotales = document.getElementById('sum-totales');
     const elPendientes = document.getElementById('sum-pendientes');
@@ -386,7 +369,6 @@ function actualizarResumen(pedidos) {
     if (elCancelados) elCancelados.textContent = cancelados;
 }
 
-// --- Abrir Modal Nuevo ---
 const btnOpenNew = document.getElementById('btn-open-new');
 if (btnOpenNew) {
     btnOpenNew.addEventListener('click', () => {
@@ -399,7 +381,6 @@ if (btnOpenNew) {
     });
 }
 
-// --- Abrir Modal Editar ---
 window.abrirEditar = async function(id) {
     const pedido = pedidosGlobal.find(p => p.id === id || p.idPedido === id);
     if (!pedido) return;
@@ -438,7 +419,6 @@ window.abrirEditar = async function(id) {
     modalPedido.classList.add('is-open');
 };
 
-// --- Guardar Pedido (POST o PUT) ---
 formPedido.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -503,7 +483,6 @@ formPedido.addEventListener('submit', async (e) => {
     }
 });
 
-// --- Confirmar Eliminación (DELETE) ---
 window.abrirEliminar = function(id) {
     pedidoAEliminarId = id;
     modalEliminar.classList.add('is-open');
@@ -536,7 +515,6 @@ if (btnConfirmarEliminar) {
     });
 }
 
-// --- Filtros Cliente-Side Integrados con Paginación ---
 const btnFiltrar = document.getElementById('btn-filtrar');
 if (btnFiltrar) {
     btnFiltrar.addEventListener('click', () => {
@@ -559,12 +537,11 @@ if (btnFiltrar) {
             return matchTexto && matchEstado && matchFecha;
         });
 
-        paginaActual = 1; // Al filtrar, regresamos forzosamente a la página 1
+        paginaActual = 1; 
         renderTabla();
     });
 }
 
-// --- Cerrar Modales ---
 const btnCancelarPedido = document.getElementById('btn-cancelar-pedido');
 if (btnCancelarPedido) {
     btnCancelarPedido.addEventListener('click', () => modalPedido.classList.remove('is-open'));
@@ -586,13 +563,11 @@ if (btnCancelarEliminar) {
     }
 });
 
-// --- Cargar al inicio ---
 document.addEventListener('DOMContentLoaded', async () => {
     await cargarCatalogos();
     await cargarPedidos();
 });
 
-// ---- Transición al salir de la página ----
 const appEl = document.querySelector('.app');
 const DURACION_SALIDA = 200;
 
