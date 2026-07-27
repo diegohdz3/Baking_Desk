@@ -1,18 +1,15 @@
-// --- Configuración API ---
 const API_URL = 'http://35.171.239.148:7000/api/productos';
 const INVENTARIO_URL = 'http://35.171.239.148:7000/api/inventario';
-const RECETAS_URL = 'http://35.171.239.148:7000/api/recetas';   // Endpoint para guardar la receta
+const RECETAS_URL = 'http://35.171.239.148:7000/api/recetas';  
 let productosGlobal = [];
-let productosFiltradosGlobal = []; // Guarda el resultado de los filtros para paginar sobre ellos
-let materiasPrimasDisponibles = []; // Guardará el inventario para los selects dinámicos
+let productosFiltradosGlobal = []; 
+let materiasPrimasDisponibles = []; 
 let productoEditId = null;
 let productoDeleteId = null;
 
-// --- Configuración Paginación ---
 let paginaActual = 1;
 const productosPorPagina = 12;
 
-// --- Elementos del DOM ---
 const gridProductos = document.getElementById('grid-productos');
 const paginationControls = document.getElementById('pagination-controls');
 const modalProducto = document.getElementById('modal-producto');
@@ -22,19 +19,15 @@ const modalVerProducto = document.getElementById('modal-ver-producto');
 const modalEliminar = document.getElementById('modal-eliminar');
 const contenedorIngredientes = document.getElementById('contenedor-ingredientes');
 
-// --- Formateador de Moneda ---
 const formatearMoneda = (valor) => new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(valor);
 
-// Utilidades de Modales
 function abrir(id){ document.getElementById(id).classList.add('is-open'); }
 function cerrar(id){ document.getElementById(id).classList.remove('is-open'); }
 
 document.querySelectorAll('[data-close]').forEach(btn => btn.addEventListener('click', () => cerrar(btn.dataset.close)));
 document.querySelectorAll('.modal-overlay').forEach(ov => ov.addEventListener('click', e => { if (e.target === ov) ov.classList.remove('is-open'); }));
 
-// ==========================================
 // CARGAR MATERIAS PRIMAS (INVENTARIO)
-// ==========================================
 async function cargarMateriasPrimas() {
     try {
         const response = await fetch(INVENTARIO_URL);
@@ -46,9 +39,7 @@ async function cargarMateriasPrimas() {
     }
 }
 
-// ==========================================
 // DINÁMICO: SE RELLENA EL FILTRO CON TEXTO PLANO
-// ==========================================
 function actualizarSelectCategoriasFiltro() {
     const selector = document.getElementById('f-categoria');
     if (!selector) return;
@@ -66,9 +57,7 @@ function actualizarSelectCategoriasFiltro() {
     selector.value = valorPrevio;
 }
 
-// ==========================================
 // LOGICA PARA INYECTAR LÍNEAS DE RECETA
-// ==========================================
 function agregarFilaIngrediente(idIngrediente = "", cantidad = "") {
     const fila = document.createElement("div");
     fila.classList.add("fila-ingrediente");
@@ -99,7 +88,6 @@ function agregarFilaIngrediente(idIngrediente = "", cantidad = "") {
 
 document.getElementById("btn-agregar-ingrediente").addEventListener("click", () => agregarFilaIngrediente());
 
-// --- Cargar Productos (GET) ---
 async function cargarProductos() {
     try {
         const response = await fetch(API_URL);
@@ -122,7 +110,6 @@ async function cargarProductos() {
     }
 }
 
-// --- Renderizar Grid de Productos con Paginación ---
 function renderGrid(productos) {
     gridProductos.innerHTML = '';
 
@@ -193,7 +180,6 @@ function renderGrid(productos) {
     renderPaginacion(productos.length);
 }
 
-// --- Renderizar Botones de Control de Páginas ---
 function renderPaginacion(totalElementos) {
     if (!paginationControls) return;
     paginationControls.innerHTML = '';
@@ -237,7 +223,7 @@ function renderPaginacion(totalElementos) {
     paginationControls.appendChild(btnSig);
 }
 
-// --- Actualizar Resumen (Tarjetas) ---
+
 function actualizarResumen(productos) {
     let activos = 0;
     let agotados = 0;
@@ -260,7 +246,6 @@ function actualizarResumen(productos) {
     document.getElementById('stat-precio').textContent = formatearMoneda(precioPromedio);
 }
 
-// --- Abrir Modal Nuevo ---
 document.getElementById('btn-open-new').addEventListener('click', () => {
     formProducto.reset();
     contenedorIngredientes.innerHTML = '';
@@ -270,7 +255,6 @@ document.getElementById('btn-open-new').addEventListener('click', () => {
     abrir('modal-producto');
 });
 
-// --- Abrir Modal Editar ---
 window.abrirEditar = async function(id) {
     const prod = productosGlobal.find(p => (p.idProducto || p.id) === id);
     if (!prod) return;
@@ -285,7 +269,6 @@ window.abrirEditar = async function(id) {
     document.getElementById('p-stock').value = prod.stockActual || 0;
     document.getElementById('p-descripcion').value = prod.descripcion || '';
 
-    // Intentar obtener la receta desde el backend al editar
     try {
         const resReceta = await fetch(`${RECETAS_URL}/producto/${id}`);
         if (resReceta.ok) {
@@ -304,11 +287,9 @@ window.abrirEditar = async function(id) {
     abrir('modal-producto');
 };
 
-// --- Guardar (POST o PUT) con Soporte de Recetas ---
 formProducto.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // 🔴 AQUÍ ESTABA EL DETALLE: Mantenemos idProducto e idCategoria para Producto.java
     const productData = {
         idProducto: productoEditId ? parseInt(productoEditId) : 0,
         nombre: document.getElementById('p-nombre').value.trim(),
@@ -323,7 +304,7 @@ formProducto.addEventListener('submit', async (e) => {
     const url = productoEditId ? `${API_URL}/${productoEditId}` : API_URL;
 
     try {
-        // 1. Guardar o Actualizar Producto
+        
         const response = await fetch(url, {
             method: method,
             headers: { 'Content-Type': 'application/json' },
@@ -336,12 +317,10 @@ formProducto.addEventListener('submit', async (e) => {
 
         const productoGuardado = await response.json();
 
-        // Asignación de ID recuperado
         const idProductoActual = productoEditId
             || productoGuardado.idProducto
             || productoGuardado.id;
 
-        // 2. Extraer ingredientes usando la estructura de Receta.java
         const filas = document.querySelectorAll(".fila-ingrediente");
         const detallesReceta = [];
 
@@ -359,7 +338,6 @@ formProducto.addEventListener('submit', async (e) => {
             }
         });
 
-        // 3. Enviar Receta si existen ingredientes válidos
         if (detallesReceta.length > 0) {
             console.log("Enviando receta adaptada al backend:", detallesReceta);
 
@@ -390,7 +368,6 @@ formProducto.addEventListener('submit', async (e) => {
     }
 });
 
-// --- Ver Producto ---
 window.verProducto = function(id) {
     const prod = productosGlobal.find(p => (p.idProducto || p.id) === id);
     if (!prod) return;
@@ -407,7 +384,6 @@ window.verProducto = function(id) {
     abrir('modal-ver-producto');
 };
 
-// --- Confirmar Eliminación (DELETE) ---
 window.abrirEliminar = function(id) {
     productoDeleteId = id;
     abrir('modal-eliminar');
@@ -434,7 +410,6 @@ document.getElementById('btn-confirmar-eliminar').addEventListener('click', asyn
     }
 });
 
-// --- Filtros Cliente-Side ---
 function aplicarFiltros() {
     const texto = document.getElementById('f-buscar').value.trim().toLowerCase();
     const categoria = document.getElementById('f-categoria').value;
@@ -457,13 +432,11 @@ document.getElementById('f-buscar').addEventListener('input', aplicarFiltros);
 document.getElementById('f-categoria').addEventListener('change', aplicarFiltros);
 document.getElementById('f-estado').addEventListener('change', aplicarFiltros);
 
-// --- Cargar al inicio ---
 document.addEventListener('DOMContentLoaded', async () => {
     await cargarMateriasPrimas();
     cargarProductos();
 });
 
-// ---- Transición al salir de la página ----
 const appEl = document.querySelector('.app');
 const DURACION_SALIDA = 200;
 
