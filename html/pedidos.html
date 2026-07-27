@@ -6,7 +6,7 @@
     <title>BakingDesk — Pedidos</title>
     <link rel="stylesheet" href="../css/pedidos.css">
 
-    <!-- Enlaces globales para el Toast -->
+    
     <link rel="stylesheet" href="../css/toast.css">
 
     <script src="../js/seguridad.js"></script>
@@ -15,15 +15,15 @@
 <body>
 
 <div class="app">
-    <!-- ================= SIDEBAR ================= -->
+    
     <aside class="sidebar">
-        <!-- AGREGAR DESDE AQUÍ -->
+     
         <div class="sidebar__logo-container">
             <img src="../Screenshot_3.png" alt="Nieves Repostería" class="sidebar__logo">
         </div>
-        <!-- HASTA AQUÍ -->
+       
         <div class="sidebar__user">
-            <!-- 🌟 Identificadores agregados aquí abajo para que seguridad.js haga su magia 🌟 -->
+          
             <div class="avatar" id="user-avatar">AS</div>
             <div>
                 <div class="sidebar__user-name" id="user-name-display">Adriana Suárez</div>
@@ -78,7 +78,7 @@
         </a>
     </aside>
 
-    <!-- ================= MAIN ================= -->
+   
     <main>
         <div class="topbar">
             <h1>Pedidos</h1>
@@ -88,7 +88,6 @@
             </button>
         </div>
 
-        <!-- ---- resumen (UBICADO AHORA SOBRE LOS FILTROS) ---- -->
         <section class="summary" style="margin-bottom: 24px;">
             <div class="summary-card">
                 <span class="summary-icon plum"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg></span>
@@ -108,7 +107,6 @@
             </div>
         </section>
 
-        <!-- ---- filtros (UBICADO DEBAJO DEL RESUMEN) ---- -->
         <section class="filters">
             <div class="filter-field">
                 <label for="f-buscar">Buscar pedido</label>
@@ -138,7 +136,6 @@
             <button class="btn-filter" id="btn-filtrar">Filtrar</button>
         </section>
 
-        <!-- ---- tabla ---- -->
         <section class="card">
             <table id="tabla-pedidos">
                 <thead>
@@ -149,22 +146,21 @@
                     <th>Fecha entrega</th>
                     <th>Total</th>
                     <th>Estado</th>
-                    <th style="display:none;">Entrega</th> <!-- Oculto temporalmente -->
+                    <th style="display:none;">Entrega</th> 
                     <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody id="tabla-body">
-                <!-- Los datos se cargarán dinámicamente aquí -->
+
                 </tbody>
             </table>
 
-            <!-- CONTENEDOR DE PAGINACIÓN ADICIONADO PARA PEDIDOS -->
+           
             <div id="pagination-container" class="pagination"></div>
         </section>
     </main>
 </div>
 
-<!-- ================= MODAL: Nuevo / Editar Pedido ================= -->
 <div class="modal-overlay" id="modal-pedido">
     <div class="modal">
         <div class="modal__header">
@@ -172,7 +168,7 @@
             <h3 id="modal-titulo">Nuevo Pedido</h3>
         </div>
         <form id="form-pedido">
-            <!-- Selector buscable de Cliente -->
+    
             <div class="field field-selector-buscable">
                 <label for="m-cliente-buscar">Cliente *</label>
 
@@ -207,7 +203,7 @@
                     Escribe parte del nombre y selecciona el resultado.
                 </small>
             </div>
-            <!-- Selector buscable de Producto -->
+         
             <div class="field field-selector-buscable">
                 <label for="m-producto-buscar">Producto *</label>
 
@@ -283,7 +279,7 @@
     </div>
 </div>
 
-<!-- ================= MODAL: Confirmar eliminación ================= -->
+
 <div class="modal-overlay" id="modal-eliminar">
     <div class="modal modal--delete">
         <div class="icon-warning">
@@ -298,7 +294,7 @@
     </div>
 </div>
 
-<!-- ================= TOAST GLOBAL ================= -->
+
 <div class="toast" id="toast">
     <span class="icon-check">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
